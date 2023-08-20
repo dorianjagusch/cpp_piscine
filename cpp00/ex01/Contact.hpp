@@ -6,14 +6,16 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:20:21 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/19 17:34:06 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/20 22:33:41 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
-#define CONTACT_HPP
+# define CONTACT_HPP
 
-#include <iostream>
+# include <iostream>
+# include <cstring>
+
 
 class Contact
 {
@@ -23,10 +25,19 @@ class Contact
 		std::string	_nick_name;
 		std::string	_phone_num;
 		std::string	_secret;
-		static int	_numInst;
+		int			_index;
+		
 	public:
-		Contact(std::string attributes[5]);
-		static int	getNumInst( void );
+		Contact( void );
+		~Contact( void );
+		void		setContact(std::string attributes[5], int index);
+		std::string	getFirstName( void ) const;
+		std::string	getLastName( void ) const;
+		std::string	getNickName( void ) const;
+		std::string	getPhoneNumber( void ) const;
+		std::string	getSecret( void ) const;
+		int			getIndex( void ) const;
+		void		printContact( void ) const;
 };
 
 #endif
