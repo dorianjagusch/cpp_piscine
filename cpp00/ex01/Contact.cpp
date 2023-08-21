@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 17:20:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/20 22:33:26 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/21 13:47:42 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Contact::Contact( void ){
 }
 
 Contact::~Contact( void ){
-	std::cout << "See you next time" << std::endl;
 }
 
 void Contact::setContact(std::string attributes[5], int index)

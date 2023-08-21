@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:57:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/20 22:52:04 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/21 13:50:48 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,15 @@ PhoneBook::PhoneBook( void ){
 
 PhoneBook::~PhoneBook( void )
 {
+	std::cout << "See you next time" << std::endl;
+	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
+	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 }
 
 bool	PhoneBook::check_phone_num(std::string phone_num){
 	for (size_t i = 0; i < phone_num.length(); i++){
-		if ((phone_num[0] != '+' && !isdigit(phone_num[i]))
-			|| !isdigit(phone_num[i]) || !isspace(phone_num[i]))
+		if ((i == 0 && phone_num[i] != '+' && !isdigit(phone_num[i]))
+			|| ( i != 0 && !isdigit(phone_num[i]) && !isspace(phone_num[i])))
 			return (false);
 	}
 	return (true);
@@ -89,11 +92,18 @@ void PhoneBook::add( void ){
 	{
 		if (!std::cin.eof())
 		{
-			do {
-				std::cout << prompts[i] << std::flush;
-				attributes[i] = getInput();
-			} while (!std::cin.eof() && attributes[i].length() == 0
-				|| (i == 3 && check_phone_num(attributes[i])));
+			if (i != 3) {
+				do {
+					std::cout << prompts[i] << std::flush;
+					attributes[i] = getInput();
+				} while (!std::cin.eof() && attributes[i].length() == 0);
+			}
+			else {
+				do {
+					std::cout << prompts[i] << std::flush;
+					attributes[i] = getInput();
+				} while (!std::cin.eof() && (attributes[i].length() == 0 || !check_phone_num(attributes[i])));
+			}
 		}
 	}
 	if (!std::cin.eof()){
