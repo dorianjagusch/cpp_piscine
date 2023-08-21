@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:20:21 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/20 22:33:41 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/21 18:12:45 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <iostream>
 # include <cstring>
-
 
 class Contact
 {
@@ -26,7 +25,7 @@ class Contact
 		std::string	_phone_num;
 		std::string	_secret;
 		int			_index;
-		
+
 	public:
 		Contact( void );
 		~Contact( void );

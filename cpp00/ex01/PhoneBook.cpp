@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:57:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 13:50:48 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:53:01 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void PhoneBook::add( void ){
 		}
 	}
 	if (!std::cin.eof()){
-		this->_contacts[index].setContact(attributes, (index % 8) + 1);
+		_contacts[index].setContact(attributes, (index % 8) + 1);
 		index = (index + 1) % 8;
 		if (NumContacts < 8)
 			NumContacts++;
@@ -125,20 +125,20 @@ void PhoneBook::_printBook( void ) const {
 	std::cout << "_____________________________________________" << std::endl;
 
 	for (int i = 0; i < 8; i++){
-		if (this->_contacts[i].getIndex() < 0){
+		if (_contacts[i].getIndex() < 0){
 			if (i == 0)
 				std::cout << "NO DATA" << std::endl;
 			break;
 		}
 
-		first_name = this->_contacts[i].getFirstName();
+		first_name = _contacts[i].getFirstName();
 		first_name = first_name.length() <= 10 ? first_name : first_name.substr(0,9).append(1, '.');
-		last_name = this->_contacts[i].getLastName();
+		last_name = _contacts[i].getLastName();
 		last_name = last_name.length() <= 10 ? last_name : last_name.substr(0,9).append(1, '.');
-		nick_name = this->_contacts[i].getNickName();
+		nick_name = _contacts[i].getNickName();
 		nick_name = nick_name.length() <= 10 ? nick_name : nick_name.substr(0,9).append(1, '.');
 
-		std::cout << "|" << std::setw(10) << this->_contacts[i].getIndex();
+		std::cout << "|" << std::setw(10) << _contacts[i].getIndex();
 		std::cout << "|" << std::setw(10) << first_name;
 		std::cout << "|" << std::setw(10) << last_name;
 		std::cout << "|" << std::setw(10) << nick_name;
@@ -166,7 +166,7 @@ void PhoneBook::search( void ) const {
 				std::cout << "Invalid entry. " << std::flush;
 		}
 		if (!std::cin.eof())
-			this->_contacts[user_index - 1].printContact();
+			_contacts[user_index - 1].printContact();
 	}
 	else if (!std::cin.eof())
 		std::cout << "No contact to display." << std::endl;
