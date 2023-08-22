@@ -5,25 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/21 17:22:19 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/22 14:23:09 by djagusch         ###   ########.fr        #
+#    Created: 2023/08/21 22:54:58 by djagusch          #+#    #+#              #
+#    Updated: 2023/08/21 22:55:20 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC := main \
-	Weapon \
-	HumanA \
-	HumanB
+	Harl
 
 SRC := $(addsuffix .cpp,$(SRC))
 
-NAME = ex03
+NAME = harl
 
 all: $(NAME)
 
 $(NAME): $(SRC)
 	@c++ -Wall -Werror -Wextra -std=c++98 $(SRC) -o $@
-
 clean:
 
 fclean: clean

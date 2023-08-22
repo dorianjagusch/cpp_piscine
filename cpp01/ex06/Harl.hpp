@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 22:55:52 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 09:53:49 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/21 22:35:56 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/21 23:02:21 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int main( void )
+# include <iostream>
+# include <string>
+
+class Harl
 {
-	std::string inputs[] = {
-		"DEBUG",
-		"INFO",
-		"ERROR",
-		"WARNING",
-		"warning",
-		"347623984",
-		"kjkevbijk",
-		""
-	};
-	Harl	harl;
+	typedef  void (Harl::*complaintfnct)(void);
 
-	for (int i = 0; i < 7; i++){
-		std::cout << "Input: " << inputs[i] << std::endl;
-		harl.complain(inputs[i]);
-	}
-	std::cout << "Input: Cleared string"<< std::endl;
-	inputs[0].clear();
-		harl.complain(inputs[0]);
-	return (0);
-}
+	private:
+		void debug( void );
+		void info( void );
+		void warning( void );
+		void error( void );
+	public:
+		Harl( void );
+		~Harl( void );
+		void complain( std::string level );
+};
+
+#endif
+

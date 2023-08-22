@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 22:36:32 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 09:54:17 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/21 23:08:28 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void Harl::complain( std::string level ){
 		&Harl::warning,
 		&Harl::error };
 	std::string	type[4] = {
-		"DEBUG",
-		"INFO",
-		"WARNING",
-		"ERROR"};
+		"debug",
+		"info",
+		"warning",
+		"error"};
 	int i;
 
 	for (i = 0; i < 4; i++)

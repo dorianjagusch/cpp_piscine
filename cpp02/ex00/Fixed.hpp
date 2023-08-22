@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 22:55:52 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 09:53:49 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/22 14:01:45 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/22 15:41:55 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include <iostream>
 
-int main( void )
+class Fixed
 {
-	std::string inputs[] = {
-		"DEBUG",
-		"INFO",
-		"ERROR",
-		"WARNING",
-		"warning",
-		"347623984",
-		"kjkevbijk",
-		""
-	};
-	Harl	harl;
+	public:
+		Fixed( void );
+		Fixed( Fixed const & src );
+		~Fixed();
+		
+		Fixed &	operator=( Fixed const & rhs );
+		int		getRawBits( void ) const;
+		int		setRawBits( int const raw );
 
-	for (int i = 0; i < 7; i++){
-		std::cout << "Input: " << inputs[i] << std::endl;
-		harl.complain(inputs[i]);
-	}
-	std::cout << "Input: Cleared string"<< std::endl;
-	inputs[0].clear();
-		harl.complain(inputs[0]);
-	return (0);
-}
+	private:
+		int _value;
+		static int const _fac_bits = 8;
+};

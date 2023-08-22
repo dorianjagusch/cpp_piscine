@@ -5,19 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/21 17:22:19 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/22 14:23:09 by djagusch         ###   ########.fr        #
+#    Created: 2023/08/22 14:02:01 by djagusch          #+#    #+#              #
+#    Updated: 2023/08/22 14:22:59 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC := main \
-	Weapon \
-	HumanA \
-	HumanB
+	Fixed
 
 SRC := $(addsuffix .cpp,$(SRC))
 
-NAME = ex03
+NAME = fixed_point
 
 all: $(NAME)
 
