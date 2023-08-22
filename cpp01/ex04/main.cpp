@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:58:23 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 21:15:33 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/22 09:39:54 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void replace_string(std::string inString, std::ofstream& outFile, std::string s1
 	size_t	pos;
 
 	pos = inString.find(s1);
-	if (pos == std::string::npos)
+	if (pos == std::string::npos || s1.length() == 0)
 		outFile << inString;
 	else
 	{
@@ -43,12 +43,13 @@ int main(int ac, char **av)
 	}
 	fileName = av[1];
 	inFile.open(fileName.c_str(), std::fstream::in);
-	if (!inFile.is_open() || !inFile){
+	if (!inFile.is_open() || !inFile.good()
+		|| inFile.peek() == std::ifstream::traits_type::eof()){
 		std::cerr << "Failed to open input file." << std::endl;
 		return (2);
 	}
 	outFile.open(fileName.append(".replace").c_str(), std::fstream::out);
-	if (!outFile.is_open() || !outFile){
+	if (!outFile.is_open() || !outFile.good()){
 		std::cerr << "Failed to open output file." << std::endl;
 		inFile.close();
 		return (3);
