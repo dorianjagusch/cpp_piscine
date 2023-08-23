@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 22:00:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 14:20:05 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/23 21:15:29 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/23 21:43:00 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-#include "ClapTrap.hpp"
+#include "IMateriaSource.hpp"
 
-class ScavTrap : virtual public ClapTrap
+class MateriaSource
 {
 public:
-	ScavTrap( std::string name );
-	ScavTrap( ScavTrap const & src );
-	~ScavTrap();
-	void		attack(const std::string& target);
-	void		guardGate( void ) const;
+	MateriaSource ();
+	MateriaSource( MateriaSource const & src );
+	~MateriaSource();
 
-	ScavTrap &	operator=( ScavTrap const & rhs );
-protected:
-	ScavTrap( void );
+	MateriaSource &	operator=( MateriaSource const & rhs );
+
+private:
+
 };
 
 #endif

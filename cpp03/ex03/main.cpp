@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 21:21:27 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 23:40:22 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:29:57 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(void){
 		diddy.takeDamage(20);
 		diddy.HighFiveGuys();
 	}
+	std::cout << std::endl;
 	{
 		DiamondTrap diddy("Bobby");
 
@@ -50,6 +51,7 @@ int main(void){
 		diddy.takeDamage(std::numeric_limits<unsigned int>::max());
 		diddy.guardGate();
 	}
+	std::cout << std::endl;
 	{
 		DiamondTrap diddy("Zeus");
 		for (int i = 0; i < 4; i++)

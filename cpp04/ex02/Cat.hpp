@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 22:00:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 14:20:05 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/23 16:39:02 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/23 20:37:21 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include "ClapTrap.hpp"
+#include <iostream>
+#include "AAnimal.hpp"
 
-class ScavTrap : virtual public ClapTrap
+class Cat : public AAnimal
 {
 public:
-	ScavTrap( std::string name );
-	ScavTrap( ScavTrap const & src );
-	~ScavTrap();
-	void		attack(const std::string& target);
-	void		guardGate( void ) const;
+	Cat();
+	Cat( Cat const & src );
+	~Cat();
 
-	ScavTrap &	operator=( ScavTrap const & rhs );
-protected:
-	ScavTrap( void );
+	Cat &			operator=( Cat const & rhs );
+	virtual void	makeSound( void ) const;
+private:
+	Brain* _brain;
 };
 
 #endif

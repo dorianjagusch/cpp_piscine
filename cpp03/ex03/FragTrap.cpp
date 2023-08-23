@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 23:37:17 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:25:27 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ FragTrap::FragTrap( FragTrap const & src ) : ClapTrap(src)
 	*this = src;
 }
 
-FragTrap::~FragTrap( void )
+FragTrap::~FragTrap()
 {
  	std::cout << "After a long arduous fight against the forces of nature.";
 	std::cout << " FragTrap " << _name << " succumbs to their injuries..." << std::endl;
@@ -55,10 +55,10 @@ void	FragTrap::HighFiveGuys( void )
 		this->no_energy();
 		return ;
 	}
-	std::cout << "FragyTrap " << _name << " solemnly raises their hand to about eye height." << std::endl;
-	std::cout << " You hestitate. Could this really ... mean whaht you think it does?" << std::endl;
+	std::cout << "FragTrap " << _name << " solemnly raises their hand to about eye height." << std::endl;
+	std::cout << " You hestitate. Could this really ... mean what you think it does?" << std::endl;
 	std::cout << " You approach with an outstreched arm - first cautiously then more confidently - " << std::endl;
-	std::cout << "and your palms meet each other emitting ther glorious ring of triumph." << std::endl;
+	std::cout << " as your palms meet each other emitting ther glorious ring of triumph." << std::endl;
 	this->_energy--;
 }
 

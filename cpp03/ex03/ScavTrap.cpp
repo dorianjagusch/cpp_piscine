@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 23:37:55 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:28:41 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ ScavTrap::ScavTrap( ScavTrap const & src ) : ClapTrap(src)
 	*this = src;
 }
 
-ScavTrap::~ScavTrap( void )
+ScavTrap::~ScavTrap()
 {
  	std::cout << "After a long arduous fight against the forces of nature.";
-	std::cout << " ScavTrap succumbs to their injuries..." << std::endl;
+	std::cout << " ScavTrap " << _name << " succumbs to their injuries..." << std::endl;
 }
 
 ScavTrap &	ScavTrap::operator=( ScavTrap const & rhs )

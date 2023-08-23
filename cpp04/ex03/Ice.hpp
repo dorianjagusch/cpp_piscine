@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 22:00:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 14:20:05 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/23 21:13:19 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/23 21:42:01 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-#include "ClapTrap.hpp"
+#include <iostream>
+#include "AMateria.hpp"
 
-class ScavTrap : virtual public ClapTrap
+class Ice : public AMateria
 {
 public:
-	ScavTrap( std::string name );
-	ScavTrap( ScavTrap const & src );
-	~ScavTrap();
-	void		attack(const std::string& target);
-	void		guardGate( void ) const;
+	Ice ();
+	Ice( Ice const & src );
+	~Ice();
 
-	ScavTrap &	operator=( ScavTrap const & rhs );
-protected:
-	ScavTrap( void );
+	Ice &	operator=( Ice const & rhs );
+
+private:
+
 };
 
 #endif

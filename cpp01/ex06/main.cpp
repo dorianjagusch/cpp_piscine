@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 22:55:52 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 09:55:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/23 14:12:55 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,44 @@
 int main(int ac, char **av)
 {
 	Harl	harl;
-	int input;
+	int		input = 0;
+		std::string	type[4] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR"};
 
-	if (ac !=2)
+	if (ac != 2)
+	{
 		std::cout << "Provide one argument, please" << std::endl;
-	for (input = 0; input < 4; input++)
-	{
-		if (type[input].length() && type[input] == level)
-			break ;
+		return (1);
 	}
-	switch (av[1])
+	while (input < 4)
 	{
-		case "DEBUG":
+		if (type[input].length() && type[input] == av[1])
+			break ;
+		input++;
+	}
+	switch (input){
+		case 0:
 			std::cout << "[ DEBUG ]" << std::endl;
-			harl.complain("DEBUG");
-		case "INFO":
+			harl.complain((std::string)"DEBUG");
+			std::cout << std::endl;
+			// intentional fall-through
+		case 1:
 			std::cout << "[ INFO ]" << std::endl;
 			harl.complain("INFO");
-		case "WARNING":
+			std::cout << std::endl;
+			// intentional fall-through
+		case 2:
 			std::cout << "[ WARNING ]" << std::endl;
 			harl.complain("WARNING");
-		case "Error":
+			std::cout << std::endl;
+			// intentional fall-through
+		case 3:
 			std::cout << "[ ERROR ]" << std::endl;
 			harl.complain("ERROR");
+			std::cout << std::endl;
 			break;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;

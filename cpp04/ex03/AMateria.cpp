@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 22:00:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 14:20:05 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/23 21:29:41 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/23 21:42:17 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#include "AMateria.hpp"
 
-#include "ClapTrap.hpp"
+AMateria::AMateria()
+{}
 
-class ScavTrap : virtual public ClapTrap
+AMateria::AMateria( AMateria const & src )
 {
-public:
-	ScavTrap( std::string name );
-	ScavTrap( ScavTrap const & src );
-	~ScavTrap();
-	void		attack(const std::string& target);
-	void		guardGate( void ) const;
+  *this = src;
+}
 
-	ScavTrap &	operator=( ScavTrap const & rhs );
-protected:
-	ScavTrap( void );
-};
+AMateria::~AMateria()
+{}
 
-#endif
+AMateria &	AMateria::operator=( AMateria const & rhs )
+{
+	if( this == &rhs )
+		_ATRIBUTE = rhs.ATTRIBUTE;
+	return (*this);
+}
