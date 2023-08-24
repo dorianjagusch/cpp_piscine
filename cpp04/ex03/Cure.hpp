@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:13:14 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 21:42:35 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 23:01:40 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ public:
 	~Cure();
 
 	Cure &	operator=( Cure const & rhs );
-
-private:
-
+	AMateria*	clone() const;
+	void		use(ICharacter& target);
 };
 
 #endif

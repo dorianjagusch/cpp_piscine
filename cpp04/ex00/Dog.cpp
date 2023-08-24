@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:49:59 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 18:24:18 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:26:11 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ Dog::~Dog()
 
 Dog &	Dog::operator=( Dog const & rhs )
 {
-  *this = rhs;
-  return (*this);
+	if (this != &rhs)
+		_type = rhs._type;
+	return (*this);
 }
 
 void Dog::makeSound( void ) const

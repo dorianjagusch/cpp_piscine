@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:48:53 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 20:32:08 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:27:05 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ Animal::Animal( std::string type ) : _type(type)
 
 Animal::Animal( Animal const & src )
 {
-	if (_type != src._type)
-		_type = src._type;
+	*this = src;
 }
 
 Animal::~Animal()

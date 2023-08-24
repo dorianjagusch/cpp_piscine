@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:01:42 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 15:39:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:12:44 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed::Fixed( int value )
 Fixed::Fixed( float value ) : _value(value)
 {
 	std::cout << "Float constructor called" << std::endl;
-	_value = (int)((float)value * (float)(1<<_frac_bits));
+	_value = int(float(value) * float(1<<_frac_bits));
 }
 
 Fixed::Fixed( Fixed const & src )
@@ -61,7 +61,7 @@ Fixed & Fixed::operator=( Fixed const & rhs )
 
 float	Fixed::toFloat( void ) const
 {
-	return ((float)_value / (float)(1<<_frac_bits));
+	return (float(_value) / float(1<<_frac_bits));
 }
 
 int		Fixed::toInt( void ) const

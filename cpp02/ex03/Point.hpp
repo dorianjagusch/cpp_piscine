@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 21:13:26 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 22:55:56 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/24 16:30:56 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/24 20:26:14 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef POINT_HPP
+# define POINT_HPP
 
-#include <string>
-#include "AMateria.hpp"
+# include <iostream>
+# include <iomanip>
+# include "Fixed.hpp"
 
-class AMateria;
-
-class ICharacter
+class Point
 {
 public:
-	virtual ~ICharacter() {}
-	virtual std::string const & getName() const = 0;
-	virtual void equip(AMateria* m) = 0;
-	virtual void unequip(int idx) = 0;
-	virtual void use(int idx, ICharacter& target) = 0;
+	Point ();
+	Point (float const & _x, float const & _y);
+	Point( Point const & src );
+	~Point();
+
+	Point &	operator=( Point const & rhs );
+	Fixed getX( void ) const;
+	Fixed getY( void ) const;
+
+private:
+	Fixed const _x;
+	Fixed const _y;
 };
 
+std::ostream & operator<<( std::ostream & out, Point const & num );
 
 #endif

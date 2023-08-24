@@ -5,29 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 21:30:47 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 21:42:39 by djagusch         ###   ########.fr       */
+/*   Created: 2023/08/23 21:31:17 by djagusch          #+#    #+#             */
+/*   Updated: 2023/08/24 23:07:23 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include <Cure.hpp>
+#include "Cure.hpp"
 
-Cure::Cure()
-{}
-
-Cure::Cure( Cure const & src )
+Cure::Cure() : AMateria("cure")
 {
-  *this = src;
+	// std::cout << "Cure default contructor called" << std::endl;
+}
+
+Cure::Cure( Cure const & src ) : AMateria(src)
+{
+	*this = src;
+	// std::cout << "Cure copier called" << std::endl;
 }
 
 Cure::~Cure()
-{}
+{
+	// std::cout << "Cure destructor called" << std::endl;
+}
 
 Cure &	Cure::operator=( Cure const & rhs )
 {
-	if( this == &rhs )
-		_ATRIBUTE = rhs.ATTRIBUTE;
+	// std::cout << "Cure assignment called" << std::endl;
+	if( this != &rhs )
+		_type = rhs.getType();
 	return (*this);
+}
+
+void		Cure::use( ICharacter& target )
+{
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}
+
+AMateria*	Cure::clone() const
+{
+	Cure *cure = new Cure(*this);
+
+	if (!cure)
+		std::cerr << "Memory allocation failed" << std::endl;
+	return (cure);
 }

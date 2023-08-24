@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 15:25:27 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:22:35 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	FragTrap::HighFiveGuys( void )
 {
 	if (_health == 0)
 	{
-		this->is_dead();
+		_is_dead();
 		return ;
 	}
 	if (_energy == 0)
 	{
-		this->no_energy();
+		_no_energy();
 		return ;
 	}
 	std::cout << "FragTrap " << _name << " solemnly raises their hand to about eye height." << std::endl;

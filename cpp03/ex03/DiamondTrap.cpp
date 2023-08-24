@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 20:24:34 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:22:35 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	DiamondTrap::whoAmI( void ) const
 {
 	if (_health == 0)
 	{
-		this->is_dead();
+		_is_dead();
 		return ;
 	}
 	std::cout << "DiamondTrap " << _name << " explains that their close friends call them by their ";

@@ -23,8 +23,7 @@ AAnimal::AAnimal( std::string type ) : _type(type)
 
 AAnimal::AAnimal( AAnimal const & src )
 {
-	if (_type != src._type)
-		_type = src._type;
+	_type = src._type;
 }
 
 AAnimal::~AAnimal()

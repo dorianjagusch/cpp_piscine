@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:41:12 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 23:05:19 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:22:21 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ private:
 	long		_energy;
 	long		_damage;
 
-	void no_energy( void ) const ;
-	void is_dead( void ) const ;
+	void _no_energy( void ) const ;
+	void _is_dead( void ) const ;
 
 	ClapTrap( void );
 };

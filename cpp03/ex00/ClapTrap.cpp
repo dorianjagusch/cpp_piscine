@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 21:30:20 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 22:38:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:22:35 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ ClapTrap::~ClapTrap()
 }
 
 
-void ClapTrap::no_energy( void ) const
+void ClapTrap::_no_energy( void ) const
 {
 	std::cout << "ClapTrap " << _name << " is out of energy" << std::endl;
 }
 
-void ClapTrap::is_dead( void ) const
+void ClapTrap::_is_dead( void ) const
 {
 	std::cout << "ClapTrap " << _name << " is dead" << std::endl;
 }
@@ -55,12 +55,12 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (_energy == 0)
 	{
-		this->no_energy();
+		_no_energy();
 		return ;
 	}
 	if (_health == 0)
 	{
-		this->is_dead();
+		_is_dead();
 		return ;
 	}
 	std::cout << "ClapTrap " << _name << " attacks " << target;
@@ -72,7 +72,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (_health == 0)
 	{
-		this->is_dead();
+		_is_dead();
 		return ;
 	}
 	std::cout << "ClapTrap " << _name << " lost " << amount << " health points";
@@ -89,12 +89,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_health == 0)
 	{
-		this->is_dead();
+		_is_dead();
 		return ;
 	}
 	if (_energy == 0)
 	{
-		this->no_energy();
+		_no_energy();
 		return ;
 	}
 	std::cout << "ClapTrap " << _name << " restores " << amount << " health points!" << std::endl;
