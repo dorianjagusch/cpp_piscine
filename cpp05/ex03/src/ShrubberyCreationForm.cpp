@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:18:32 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/25 17:50:11 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:50:03 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
-	AForm("ShrubberyCreationForm", 145, 137), _target(target)
+	AForm("shrubbery creation", 145, 137), _target(target)
 {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) :
-	AForm("ShrubberyCreationForm", 145, 137), _target(src._target)
+	AForm("shrubbery creation", 145, 137), _target(src._target)
 {
 }
 
@@ -44,15 +44,15 @@ ShrubberyCreationForm &	ShrubberyCreationForm::operator=( ShrubberyCreationForm 
 
 void	ShrubberyCreationForm::execute( const Bureaucrat& executor ) const throw(SignedFormException, GradeTooLowException)
 {
-	std::ofstream file;
 	std::string fileName = _target + "_shubbery";
+	std::ofstream file(fileName.c_str());
 
 	if (!this->getSigned())
 		throw(AForm::SignedFormException());
 	else if(executor.getGrade() > this->getExecGrade())
 		throw(AForm::GradeTooLowException());
 
-	file.open(fileName.c_str(), std::fstream::in);
+
 	if (!file.is_open() || !file.good())
 		return;
 	file << "               ,@@@@@@@," << std::endl;

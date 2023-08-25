@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/25 12:37:44 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/25 16:48:48 by djagusch         ###   ########.fr        #
+#    Updated: 2023/08/25 18:48:32 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ FILES := Bureaucrat \
 	AForm \
 	ShrubberyCreationForm \
 	RobotomyRequestForm \
-	PresidentialPardonForm
+	PresidentialPardonForm \
+	Intern
 
 S = src
 O = obj
@@ -57,6 +58,7 @@ clean:
 	@$(RM) -f $(OBJS)
 	@if [ -d $O ]; then $(RM) -rf $(O_DIRS) $(OBJS_B) $O $(OB); fi
 	@echo "$(COLOUR_RED) .o-files removed$(COLOUR_END)"
+	@$(RM) -f *_shubbery
 
 fclean: clean
 	@$(RM) -f $(NAME)

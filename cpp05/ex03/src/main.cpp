@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 09:58:23 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/25 17:23:11 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:57:35 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,30 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
-	Bureaucrat maggie("Margaret Evelyn Lenny", 140);
-	Bureaucrat bart("Bartholomew Jojo", 75);
-	Bureaucrat lisa("Lisa Marie", 50);
-	Bureaucrat marge("Marjorie Jaqueline", 5);
-	Bureaucrat homer("Homer Jay", 10);
+	Bureaucrat	maggie("Margaret Evelyn Lenny", 140);
+	Bureaucrat	bart("Bartholomew Jojo", 75);
+	Bureaucrat	lisa("Lisa Marie", 50);
+	Bureaucrat	marge("Marjorie Jaqueline", 5);
+	Bureaucrat	homer("Homer Jay", 10);
+	Intern		millhouse;
 
 	AForm *array[] = {
-		new RobotomyRequestForm("Bender"),
-		new RobotomyRequestForm("C3PO"),
-		new RobotomyRequestForm("Wall-e"),
-		new RobotomyRequestForm("Optimus Prime"),
-		new ShrubberyCreationForm("garden"),
-		new ShrubberyCreationForm("park"),
-		new ShrubberyCreationForm("school"),
-		new ShrubberyCreationForm("The drawer"),
-		new PresidentialPardonForm("Al Capone"),
-		new PresidentialPardonForm("Ted Bundy"),
-		new PresidentialPardonForm("Pablo Escobar"),
-		new PresidentialPardonForm("Aileen Wuornos"),
+		millhouse.makeForm("robotomy request", "Bender"),
+		millhouse.makeForm("robotomy request", "C3PO"),
+		millhouse.makeForm("robotomy request", "Wall-e"),
+		millhouse.makeForm("robotomy request", "Optimus Prime"),
+		millhouse.makeForm("shrubbery creation", "garden"),
+		millhouse.makeForm("shrubbery creation", "park"),
+		millhouse.makeForm("shrubbery creation", "school"),
+		millhouse.makeForm("shrubbery creation", "The drawer"),
+		millhouse.makeForm("presidential pardon", "Al Capone"),
+		millhouse.makeForm("presidential pardon", "Ted Bundy"),
+		millhouse.makeForm("presidential pardon", "Pablo Escobar"),
+		millhouse.makeForm("presidential pardon", "Aileen Wuornos"),
 	};
 
 	std::cout << "============== Maggie ==============" << std::endl;
@@ -87,5 +89,8 @@ int main()
 	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
 		delete array[i];
 	}
+
+	millhouse.makeForm("eating request", "Apple pie");
+
 	return (0);
 }
