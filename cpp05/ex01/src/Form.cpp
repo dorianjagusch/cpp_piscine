@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:20:11 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/25 15:18:15 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Form::Form ( std::string name, int sign_grade, int exec_grade ) throw(GradeTooHi
 		throw (GradeTooLowException());
 }
 
-Form::Form( Form const & src ) throw(GradeTooHighException, GradeTooLowException) :
+Form::Form( Form const &src ) throw(GradeTooHighException, GradeTooLowException) :
 	_name( src._name ), _signed(false),  _sign_grade( src._sign_grade ), _exec_grade( src._exec_grade )
 {
 	if (_sign_grade < 1)
@@ -44,14 +44,14 @@ Form::Form( Form const & src ) throw(GradeTooHighException, GradeTooLowException
 Form::~Form()
 {}
 
-Form &	Form::operator=( Form const & rhs )
+Form &	Form::operator=( Form const &rhs )
 {
 	if( this != &rhs )
 		_signed = rhs._signed;
 	return (*this);
 }
 
-std::ostream & operator<<( std::ostream & out, Form const & rhs )
+std::ostream &operator<<( std::ostream &out, Form const &rhs )
 {
 	out	<< "Form " << rhs.getName() << " signed:" << rhs.getSigned()
 		<< " sign grade:" << rhs.getSignGrade() << "exec grade: " << rhs.getExecGrade()
@@ -79,7 +79,7 @@ int	Form::getExecGrade( void ) const
 	return(_exec_grade);
 }
 
-bool	Form::beSigned(Bureaucrat & bureaucrat) throw(GradeTooHighException, GradeTooLowException)
+bool	Form::beSigned(Bureaucrat &bureaucrat) throw(GradeTooHighException, GradeTooLowException)
 {
 	if (_signed)
 		return (true);

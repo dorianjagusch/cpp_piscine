@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:01:42 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 23:17:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Fixed::Fixed( float value ) : _value(value)
 	_value = (int)(float(value) * float(1<<_frac_bits));
 }
 
-Fixed::Fixed( Fixed const & src )
+Fixed::Fixed( Fixed const &src )
 {
 	//std::cout << "Copy constructor called" << std::endl;
 	*this = src;
@@ -63,13 +63,13 @@ int		Fixed::toInt( void ) const
 
 
 
-std::ostream & operator<<( std::ostream & out, Fixed const & num )
+std::ostream &operator<<( std::ostream &out, Fixed const &num )
 {
 	out << num.toFloat();
 	return (out);
 }
 
-Fixed & Fixed::operator=( Fixed const & rhs )
+Fixed &Fixed::operator=( Fixed const &rhs )
 {
 	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this->_value != rhs.getRawBits())
@@ -79,32 +79,32 @@ Fixed & Fixed::operator=( Fixed const & rhs )
 
 //Comparative operators
 
-bool	Fixed::operator>( Fixed const & rhs ) const
+bool	Fixed::operator>( Fixed const &rhs ) const
 {
 	return ( this->getRawBits() > rhs.getRawBits() );
 }
 
-bool	Fixed::operator<( Fixed const & rhs ) const
+bool	Fixed::operator<( Fixed const &rhs ) const
 {
 	return ( this->getRawBits() < rhs.getRawBits() );
 }
 
-bool	Fixed::operator>=( Fixed const & rhs ) const
+bool	Fixed::operator>=( Fixed const &rhs ) const
 {
 	return ( this->getRawBits() >= rhs.getRawBits() );
 }
 
-bool	Fixed::operator<=( Fixed const & rhs ) const
+bool	Fixed::operator<=( Fixed const &rhs ) const
 {
 	return ( this->getRawBits() <= rhs.getRawBits() );
 }
 
-bool	Fixed::operator==( Fixed const & rhs ) const
+bool	Fixed::operator==( Fixed const &rhs ) const
 {
 	return ( this->getRawBits() == rhs.getRawBits() );
 }
 
-bool	Fixed::operator!=( Fixed const & rhs ) const
+bool	Fixed::operator!=( Fixed const &rhs ) const
 {
 	return ( this->getRawBits() != rhs.getRawBits() );
 }
@@ -112,7 +112,7 @@ bool	Fixed::operator!=( Fixed const & rhs ) const
 
 //Arithmetic operations
 
-Fixed	Fixed::operator+( Fixed const & rhs ) const
+Fixed	Fixed::operator+( Fixed const &rhs ) const
 {
 	Fixed result;
 
@@ -120,7 +120,7 @@ Fixed	Fixed::operator+( Fixed const & rhs ) const
 	return ( result );
 }
 
-Fixed	Fixed::operator-( Fixed const & rhs ) const
+Fixed	Fixed::operator-( Fixed const &rhs ) const
 {
 	Fixed result;
 
@@ -128,7 +128,7 @@ Fixed	Fixed::operator-( Fixed const & rhs ) const
 	return ( result );
 }
 
-Fixed	Fixed::operator*( Fixed const & rhs ) const
+Fixed	Fixed::operator*( Fixed const &rhs ) const
 {
 	Fixed result;
 
@@ -136,7 +136,7 @@ Fixed	Fixed::operator*( Fixed const & rhs ) const
 	return ( result );
 }
 
-Fixed	Fixed::operator/( Fixed const & rhs ) const
+Fixed	Fixed::operator/( Fixed const &rhs ) const
 {
 	Fixed result;
 
@@ -177,7 +177,7 @@ Fixed 	Fixed::operator--( int )
 
 // Static comparison functions
 
-const Fixed & Fixed::min(Fixed const & a, Fixed const & b)
+const Fixed &Fixed::min(Fixed const &a, Fixed const &b)
 {
 	std::cout << "const min called" << std::endl;
 	if (a < b)
@@ -185,7 +185,7 @@ const Fixed & Fixed::min(Fixed const & a, Fixed const & b)
 	return (b);
 }
 
-const Fixed & Fixed::max(Fixed const & a, Fixed const & b)
+const Fixed &Fixed::max(Fixed const &a, Fixed const &b)
 {
 	std::cout << "const max called" << std::endl;
 	if (a > b)
@@ -193,7 +193,7 @@ const Fixed & Fixed::max(Fixed const & a, Fixed const & b)
 	return (b);
 }
 
-Fixed & Fixed::min(Fixed & a, Fixed & b)
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
 	std::cout << "min called" << std::endl;
 	if (a < b)
@@ -201,7 +201,7 @@ Fixed & Fixed::min(Fixed & a, Fixed & b)
 	return (b);
 }
 
-Fixed & Fixed::max(Fixed & a, Fixed & b)
+Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
 	std::cout << "max called" << std::endl;
 	if (a > b)

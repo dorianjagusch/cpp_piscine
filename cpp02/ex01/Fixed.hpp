@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:01:45 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 15:43:45 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ public:
 	Fixed( void );
 	Fixed( int value );
 	Fixed( float value );
-	Fixed( Fixed const & src );
+	Fixed( Fixed const &src );
 	~Fixed( void );
 
-	Fixed &	operator=( Fixed const & rhs );
+	Fixed &	operator=( Fixed const &rhs );
 	int		getRawBits( void ) const;
 	int		setRawBits( int const raw );
 	float	toFloat( void ) const;
@@ -32,4 +32,4 @@ private:
 	static int const _frac_bits = 8;
 };
 
-std::ostream & operator<<( std::ostream & out, Fixed const & num );
+std::ostream &operator<<( std::ostream &out, Fixed const &num );

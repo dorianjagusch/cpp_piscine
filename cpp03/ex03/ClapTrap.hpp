@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:41:12 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 16:22:21 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ class ClapTrap
 {
 public:
 	ClapTrap( std::string name );
-	ClapTrap( ClapTrap const & src );
+	ClapTrap( ClapTrap const &src );
 	~ClapTrap();
 
-	ClapTrap &	operator=( ClapTrap const & rhs );
+	ClapTrap &	operator=( ClapTrap const &rhs );
 
 	std::string getName( void ) const;
 	void		attack(const std::string& target);

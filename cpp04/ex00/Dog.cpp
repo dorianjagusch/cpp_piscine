@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:49:59 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 16:26:11 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Dog::Dog( ) : Animal("Dog")
 	std::cout << "Dog initialised" << std::endl;
 }
 
-Dog::Dog( Dog const & src ) : Animal(src)
+Dog::Dog( Dog const &src ) : Animal(src)
 {
   *this = src;
 }
@@ -27,7 +27,7 @@ Dog::~Dog()
 	std::cout << "Dog obliterated" << std::endl;
 }
 
-Dog &	Dog::operator=( Dog const & rhs )
+Dog &	Dog::operator=( Dog const &rhs )
 {
 	if (this != &rhs)
 		_type = rhs._type;

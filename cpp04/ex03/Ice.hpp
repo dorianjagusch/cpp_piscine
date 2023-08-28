@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:13:19 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 23:03:13 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ class Ice : public AMateria
 {
 public:
 	Ice ();
-	Ice( Ice const & src );
+	Ice( Ice const &src );
 	~Ice();
 
-	Ice &	operator=( Ice const & rhs );
+	Ice &	operator=( Ice const &rhs );
 	AMateria*	clone() const;
 	void		use(ICharacter& target);
 };

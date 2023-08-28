@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:00:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 14:19:57 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ class FragTrap : virtual public ClapTrap
 {
 public:
 	FragTrap( std::string name );
-	FragTrap( FragTrap const & src );
+	FragTrap( FragTrap const &src );
 	~FragTrap();
 	void		HighFiveGuys( void );
 
-	FragTrap &	operator=( FragTrap const & rhs );
+	FragTrap &	operator=( FragTrap const &rhs );
 protected:
 	FragTrap( void );
 };

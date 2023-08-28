@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 16:22:35 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ FragTrap::FragTrap( std::string name ) : ClapTrap(name)
 	std::cout << "and rises as FragTrap " << _name << " from the cracks in the ice" << std::endl;
 }
 
-FragTrap::FragTrap( FragTrap const & src ) : ClapTrap(src)
+FragTrap::FragTrap( FragTrap const &src ) : ClapTrap(src)
 {
 	*this = src;
 }
@@ -36,7 +36,7 @@ FragTrap::~FragTrap()
 	std::cout << " FragTrap " << _name << " succumbs to their injuries..." << std::endl;
 }
 
-FragTrap &	FragTrap::operator=( FragTrap const & rhs )
+FragTrap &	FragTrap::operator=( FragTrap const &rhs )
 {
 	if (this->_name != rhs.getName())
 		*this = rhs;

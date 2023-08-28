@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:18:32 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/25 18:50:03 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & src ) :
+ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &src ) :
 	AForm("shrubbery creation", 145, 137), _target(src._target)
 {
 }
@@ -30,7 +30,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
 
-ShrubberyCreationForm &	ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
+ShrubberyCreationForm &	ShrubberyCreationForm::operator=( ShrubberyCreationForm const &rhs )
 {
 	if( this != &rhs )
 	{

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:40:15 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 18:50:37 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ class Animal
 {
 public:
 	Animal();
-	Animal( Animal const & src );
+	Animal( Animal const &src );
 	virtual ~Animal();
 
-	Animal &		operator=( Animal const & rhs );
+	Animal &		operator=( Animal const &rhs );
 	std::string		getType( void ) const;
 	virtual void	makeSound( void ) const;
 

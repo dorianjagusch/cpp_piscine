@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 16:22:35 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 	std::cout << "and rises as ScavTrap " << _name << " from the depths of Hell" << std::endl;
 }
 
-ScavTrap::ScavTrap( ScavTrap const & src ) : ClapTrap(src)
+ScavTrap::ScavTrap( ScavTrap const &src ) : ClapTrap(src)
 {
 	*this = src;
 }
@@ -32,7 +32,7 @@ ScavTrap::~ScavTrap( void )
 	std::cout << " ScavTrap succumbs to their injuries..." << std::endl;
 }
 
-ScavTrap &	ScavTrap::operator=( ScavTrap const & rhs )
+ScavTrap &	ScavTrap::operator=( ScavTrap const &rhs )
 {
 	if (this->_name != rhs.getName())
 		*this = rhs;

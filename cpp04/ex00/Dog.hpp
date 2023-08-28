@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:39:13 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 18:14:14 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ class Dog : public Animal
 {
 public:
 	Dog();
-	Dog( Dog const & src );
+	Dog( Dog const &src );
 	~Dog();
 
-	Dog &			operator=( Dog const & rhs );
+	Dog &			operator=( Dog const &rhs );
 	virtual void	makeSound( void ) const;
 
 };

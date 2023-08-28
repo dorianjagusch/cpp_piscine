@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 17:51:52 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/24 22:47:53 by djagusch         ###   ########.fr        #
+#    Updated: 2023/08/25 12:39:50 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,11 @@ FILES := AMateria \
 	Ice \
 	MateriaSource
 
+HEADER = ICharacter \
+	IMateriaSource \
+
 SRC = $(addsuffix .cpp,$(FILES) main)
-INC = $(addsuffix .hpp,$(FILES))
+INC = $(addsuffix .hpp,$(FILES) $(HEADER))
 
 NAME = materiagurl
 

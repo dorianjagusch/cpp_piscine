@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 19:11:53 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 00:00:49 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Converter::Converter()
 {}
 
-Converter::Converter( Converter const & src )
+Converter::Converter( Converter const &src )
 {
 	(void) src;
 }
@@ -24,14 +24,14 @@ Converter::Converter( Converter const & src )
 Converter::~Converter()
 {}
 
-Converter &	Converter::operator=( Converter const & rhs )
+Converter &	Converter::operator=( Converter const &rhs )
 {
 	if ( this != &rhs )
-		(void) rhs;
+		static_cast<void>( rhs );
 	return (*this);
 }
 
-bool		Converter::_isOverflow( std::string const & input )
+bool		Converter::_isOverflow( std::string const &input )
 {
 	long long tmp = strtoll( input.c_str(), NULL, 10 );
 
@@ -41,7 +41,7 @@ bool		Converter::_isOverflow( std::string const & input )
 	return ( false );
 }
 
-bool	Converter::_isChar( std::string const & input )
+bool	Converter::_isChar( std::string const &input )
 {
 
 	if ( input.length() != 1 || isdigit(input[0]) )
@@ -51,7 +51,7 @@ bool	Converter::_isChar( std::string const & input )
 	return ( true );
 }
 
-bool	Converter::_isInt( std::string const & input )
+bool	Converter::_isInt( std::string const &input )
 {
 	int		offset = 0;
 	size_t	i = 0;
@@ -66,7 +66,7 @@ bool	Converter::_isInt( std::string const & input )
 	return ( true );
 }
 
-bool	Converter::_isFloat( std::string const & input )
+bool	Converter::_isFloat( std::string const &input )
 {
 	int		dot = 0;
 	int		offset = 0;
@@ -88,7 +88,7 @@ bool	Converter::_isFloat( std::string const & input )
 	return ( true );
 }
 
-bool	Converter::_isDouble( std::string const & input)
+bool	Converter::_isDouble( std::string const &input)
 {
 	int		dot = 0;
 	int		offset = 0;
@@ -108,7 +108,7 @@ bool	Converter::_isDouble( std::string const & input)
 	return ( true );
 }
 
-bool	Converter::_isPseudoLiteral(std::string const & input, const int c)
+bool	Converter::_isPseudoLiteral(std::string const &input, const int c)
 {
 	if ( (c == 'f' && ( input == "inff" || input == "-inff" || input == "nanf") )
 		|| ( c == 'd' && ( input == "inf" || input == "-inf" || input == "nan") ) ){
@@ -118,7 +118,7 @@ bool	Converter::_isPseudoLiteral(std::string const & input, const int c)
 	return ( false );
 }
 
-bool	Converter::_isImpossible( std::string const & input)
+bool	Converter::_isImpossible( std::string const &input)
 {
 	try {
 		switch (_type){
@@ -138,7 +138,7 @@ bool	Converter::_isImpossible( std::string const & input)
 		}
 		return ( false );
 	}
-	catch (std::exception & e){
+	catch (std::exception &e){
 		return ( true );
 	}
 }
@@ -193,7 +193,7 @@ void	Converter::_printInt( void )
 	std::cout << std::endl;
 }
 
-void	Converter::_printFloat( std::string const & input )
+void	Converter::_printFloat( std::string const &input )
 {
 	std::cout << "float: ";
 	if ( !_pseudo_literal && -std::numeric_limits< float >::max() <= _double
@@ -202,15 +202,15 @@ void	Converter::_printFloat( std::string const & input )
 	}
 	else
 		if ( input == "+inff" || input == "+inf" )
-			std::cout << "+inff";
+			std::cout << "+inf";
 		else if ( input == "-inff" || input == "-inf" )
-			std::cout << "-inff";
+			std::cout << "-inf";
 		else
 			std::cout << "nan";
-	std::cout << std::endl;
+	std::cout << "f" << std::endl;
 }
 
-void	Converter::_printDouble( std::string const & input )
+void	Converter::_printDouble( std::string const &input )
 {
 	std::cout << "double: ";
 	if ( _pseudo_literal ){
@@ -226,7 +226,7 @@ void	Converter::_printDouble( std::string const & input )
 	std::cout << std::endl;
 }
 
-void	Converter::_printConversion( std::string const & input )
+void	Converter::_printConversion( std::string const &input )
 {
 	if (!_possible || _pseudo_literal){
 		std::cout << "char: impossible" << std::endl
@@ -241,7 +241,7 @@ void	Converter::_printConversion( std::string const & input )
 	_printDouble( input );
 }
 
-void	Converter::convert( std::string const & input )
+void	Converter::convert( std::string const &input )
 {
 	if(input.empty())
 	{
@@ -249,7 +249,7 @@ void	Converter::convert( std::string const & input )
 		_printConversion( input );
 		return ;
 	}
-	static bool	(*funct[4])( std::string const & ) = {
+	static bool	(*funct[4])( std::string const &) = {
 		_isChar,
 		_isInt,
 		_isFloat,

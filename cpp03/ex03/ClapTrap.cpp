@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 21:30:20 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 16:22:35 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap( std::string name ) : _name(name), _health(10), _energy(10), 
 	std::cout << "ClapTrap " << name << " came into existence" << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap const & src )
+ClapTrap::ClapTrap( ClapTrap const &src )
 {
 	*this = src;
 }
@@ -32,7 +32,7 @@ std::string ClapTrap::getName( void ) const
 	return (_name);
 }
 
-ClapTrap &	ClapTrap::operator=( ClapTrap const & rhs )
+ClapTrap &	ClapTrap::operator=( ClapTrap const &rhs )
 {
 	if (this != &rhs)
 		_name = rhs._name;

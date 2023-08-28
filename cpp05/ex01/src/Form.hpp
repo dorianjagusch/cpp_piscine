@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 12:40:54 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/25 14:04:28 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ public:
 	};
 
 	Form( std::string, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException);
-	Form( Form const & src ) throw(GradeTooHighException, GradeTooLowException);
+	Form( Form const &src ) throw(GradeTooHighException, GradeTooLowException);
 	~Form();
 
-	Form &		operator=( Form const & rhs );
+	Form &		operator=( Form const &rhs );
 	std::string	getName( void ) const ;
 	bool		getSigned( void ) const ;
 	int			getSignGrade( void ) const ;
 	int			getExecGrade( void ) const ;
-	bool		beSigned(Bureaucrat & bureaucrat) throw(GradeTooHighException, GradeTooLowException);
+	bool		beSigned(Bureaucrat &bureaucrat) throw(GradeTooHighException, GradeTooLowException);
 
 private:
 	std::string const	_name;
@@ -55,6 +55,6 @@ private:
 	Form();
 };
 
-std::ostream & operator<<( std::ostream & out, Form const & rhs );
+std::ostream &operator<<( std::ostream &out, Form const &rhs );
 
 #endif

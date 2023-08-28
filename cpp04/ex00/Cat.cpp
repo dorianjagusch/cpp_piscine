@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:49:26 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 20:26:02 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Cat::Cat( ) : Animal("Cat")
 	std::cout << "Cat initialised" << std::endl;
 }
 
-Cat::Cat( Cat const & src ) : Animal(src)
+Cat::Cat( Cat const &src ) : Animal(src)
 {
   *this = src;
 }
@@ -27,7 +27,7 @@ Cat::~Cat()
 	std::cout << "Cat obliterated" << std::endl;
 }
 
-Cat &	Cat::operator=( Cat const & rhs )
+Cat &	Cat::operator=( Cat const &rhs )
 {
 	if (this != &rhs)
 		_type = rhs._type;

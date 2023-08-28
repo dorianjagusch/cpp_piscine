@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:25:00 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 20:11:12 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Brain::Brain()
 	std::cout << "Brain constructed" << std::endl;
 }
 
-Brain::Brain( Brain const & src )
+Brain::Brain( Brain const &src )
 {
 	*this = src;
 	std::cout << "Brain copied" << std::endl;
@@ -28,7 +28,7 @@ Brain::~Brain()
 	std::cout << "Brain squished" << std::endl;
 }
 
-Brain &	Brain::operator=( Brain const & rhs )
+Brain &	Brain::operator=( Brain const &rhs )
 {
 	if ( this != &rhs ) {
 		for ( int i = 0; i < 100; i++ ) {

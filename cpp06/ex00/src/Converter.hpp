@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:17:37 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/27 23:58:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 class Converter
 {
 public:
-	static void		convert( std::string const & input );
+	static void		convert( std::string const &input );
 
 private:
 
@@ -51,25 +51,25 @@ private:
 	static bool		_possible;
 
 	Converter ();
-	Converter( Converter const & src );
+	Converter( Converter const &src );
 	~Converter();
-	Converter &	operator=( Converter const & rhs );
+	Converter &	operator=( Converter const &rhs );
 
-	static bool		_isChar( std::string const & input );
-	static bool		_isInt( std::string const & input );
-	static bool		_isFloat( std::string const & input );
-	static bool		_isDouble( std::string const & input );
-	static bool		_isPseudoLiteral( std::string const & input, const int c );
-	static bool		_isImpossible( std::string const & input );
-	static bool		_isOverflow( std::string const & input );
+	static bool		_isChar( std::string const &input );
+	static bool		_isInt( std::string const &input );
+	static bool		_isFloat( std::string const &input );
+	static bool		_isDouble( std::string const &input );
+	static bool		_isPseudoLiteral( std::string const &input, const int c );
+	static bool		_isImpossible( std::string const &input );
+	static bool		_isOverflow( std::string const &input );
 
 	static void		_printChar( void );
 	static void		_printInt( void );
-	static void		_printFloat( std::string const & input );
-	static void		_printDouble( std::string const & input );
+	static void		_printFloat( std::string const &input );
+	static void		_printDouble( std::string const &input );
 
 	static void		_convertValue( void );
-	static void		_printConversion( std::string const & input );
+	static void		_printConversion( std::string const &input );
 };
 
 #endif

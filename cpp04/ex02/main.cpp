@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:38:31 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 21:06:21 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/25 09:44:23 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int main()
 		if (kitty) {std::cout << kitty->getType() << " " << std::endl;}
 
 		if (kitty) {kitty->makeSound();}
-		if (kitty) {meta->makeSound();}
+		if (meta) {meta->makeSound();}
 
-		if (kitty) {delete meta;}
+		if (meta) {delete meta;}
 		if (kitty) {delete kitty;}
 	}
 	std::cout << std::endl;

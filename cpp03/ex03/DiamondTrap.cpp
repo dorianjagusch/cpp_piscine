@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 16:22:35 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap( std::string name ) : ClapTrap( name ), ScavTrap( name 
 	std::cout << "and rises as DiamondTrap " << _name << " from the sewers" << std::endl;
 }
 
-DiamondTrap::DiamondTrap( DiamondTrap const & src ) : ClapTrap( src ),  ScavTrap( src ), FragTrap( src )
+DiamondTrap::DiamondTrap( DiamondTrap const &src ) : ClapTrap( src ),  ScavTrap( src ), FragTrap( src )
 {
 	*this = src;
 }
@@ -33,7 +33,7 @@ DiamondTrap::~DiamondTrap()
 	std::cout << " DiamondTrap goes back to the sewers, I guess." << std::endl;
 }
 
-DiamondTrap &	DiamondTrap::operator=( DiamondTrap const & rhs )
+DiamondTrap &	DiamondTrap::operator=( DiamondTrap const &rhs )
 {
 	if (_name != rhs._name)
 		_name = rhs._name;

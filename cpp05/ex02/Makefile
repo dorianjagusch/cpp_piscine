@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/25 12:37:44 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/25 16:48:48 by djagusch         ###   ########.fr        #
+#    Updated: 2023/08/27 20:33:04 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,9 +54,9 @@ $O/%.o: $S/%.cpp $(INC) | $O
 
 clean:
 	$(RM) -f $(OBJ)
-	@$(RM) -f $(OBJS)
-	@if [ -d $O ]; then $(RM) -rf $(O_DIRS) $(OBJS_B) $O $(OB); fi
+	@if [ -d $O ]; then $(RM) -rf $(O_DIRS) $O; fi
 	@echo "$(COLOUR_RED) .o-files removed$(COLOUR_END)"
+	@$(RM) -f *_shubbery
 
 fclean: clean
 	@$(RM) -f $(NAME)

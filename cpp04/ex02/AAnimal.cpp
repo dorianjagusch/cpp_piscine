@@ -21,7 +21,7 @@ AAnimal::AAnimal( std::string type ) : _type(type)
 {
 }
 
-AAnimal::AAnimal( AAnimal const & src )
+AAnimal::AAnimal( AAnimal const &src )
 {
 	_type = src._type;
 }
@@ -31,7 +31,7 @@ AAnimal::~AAnimal()
 	std::cout << "Random animal obliterated" << std::endl;
 }
 
-AAnimal &	AAnimal::operator=( AAnimal const & rhs )
+AAnimal &	AAnimal::operator=( AAnimal const &rhs )
 {
 	if (this != &rhs)
 		_type = rhs._type;

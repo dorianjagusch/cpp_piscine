@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:49:26 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 21:02:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat( ) : AAnimal("Cat")
 	std::cout << "Cat initialised" << std::endl;
 }
 
-Cat::Cat( Cat const & src ) : AAnimal(src)
+Cat::Cat( Cat const &src ) : AAnimal(src)
 {
 	_brain = new Brain(*(src._brain));
 	if (!_brain)
@@ -32,7 +32,7 @@ Cat::~Cat()
 		delete _brain;
 }
 
-Cat &	Cat::operator=( Cat const & rhs )
+Cat &	Cat::operator=( Cat const &rhs )
 {
 	if (this != &rhs)
 	{

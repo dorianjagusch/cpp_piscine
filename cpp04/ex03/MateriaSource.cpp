@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:13:56 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 23:06:43 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ MateriaSource::MateriaSource()
 	}
 }
 
-MateriaSource::MateriaSource( MateriaSource const & src )
+MateriaSource::MateriaSource( MateriaSource const &src )
 {
 	*this = src;
 	for (int i = 0; i < 4; i++){
@@ -35,7 +35,7 @@ MateriaSource::~MateriaSource()
 	}
 }
 
-MateriaSource &	MateriaSource::operator=( MateriaSource const & rhs )
+MateriaSource &	MateriaSource::operator=( MateriaSource const &rhs )
 {
 	if ( this != &rhs ){
 		for (int i = 0; i < 4; i++){
@@ -61,7 +61,7 @@ void MateriaSource::learnMateria( AMateria* materia )
 	std::cout << "This materia source cannot learn any more Materias" << std::endl;
 }
 
-AMateria* MateriaSource::createMateria( std::string const & type )
+AMateria* MateriaSource::createMateria( std::string const &type )
 {
 	for ( int i = 0; i < 4; i++){
 		if (_learned[i] != NULL && _learned[i]->getType() == type){

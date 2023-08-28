@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:30:16 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 23:06:05 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Character::Character( std::string name ) : _name(name)
 	// std::cout << "Parametric character constructor called" << std::endl;
 }
 
-Character::Character( Character const & src )
+Character::Character( Character const &src )
 {
 	*this = src;
 
@@ -56,7 +56,7 @@ Character::~Character()
 	// std::cout << "Character destructor called" << std::endl;
 }
 
-Character &	Character::operator=( Character const & rhs )
+Character &	Character::operator=( Character const &rhs )
 {
 	if ( this != &rhs )
 	{
@@ -73,7 +73,7 @@ Character &	Character::operator=( Character const & rhs )
 	return (*this);
 }
 
-std::string const & Character::getName() const
+std::string const &Character::getName() const
 {
 	return (_name);
 }

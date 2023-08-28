@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:19:14 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/25 17:50:47 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ RobotomyRequestForm::RobotomyRequestForm()
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const target) :
-	AForm("RobotomyRequestForm", 72, 45), _target(target)
+	AForm("robotomy form", 72, 45), _target(target)
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & src ) :
-	AForm("RobotomyRequestForm", 72, 45), _target(src._target)
+RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &src ) :
+	AForm("robotomy form", 72, 45), _target(src._target)
 {
 }
 
@@ -31,7 +31,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
-RobotomyRequestForm &	RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
+RobotomyRequestForm &	RobotomyRequestForm::operator=( RobotomyRequestForm const &rhs )
 {
 	if( this != &rhs )
 	{

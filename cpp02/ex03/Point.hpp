@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:30:56 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 20:26:14 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class Point
 {
 public:
 	Point ();
-	Point (float const & _x, float const & _y);
-	Point( Point const & src );
+	Point (float const &_x, float const &_y);
+	Point( Point const &src );
 	~Point();
 
-	Point &	operator=( Point const & rhs );
+	Point &	operator=( Point const &rhs );
 	Fixed getX( void ) const;
 	Fixed getY( void ) const;
 
@@ -34,6 +34,6 @@ private:
 	Fixed const _y;
 };
 
-std::ostream & operator<<( std::ostream & out, Point const & num );
+std::ostream &operator<<( std::ostream &out, Point const &num );
 
 #endif

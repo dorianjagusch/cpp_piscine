@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:31:17 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 23:07:23 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Cure::Cure() : AMateria("cure")
 	// std::cout << "Cure default contructor called" << std::endl;
 }
 
-Cure::Cure( Cure const & src ) : AMateria(src)
+Cure::Cure( Cure const &src ) : AMateria(src)
 {
 	*this = src;
 	// std::cout << "Cure copier called" << std::endl;
@@ -28,7 +28,7 @@ Cure::~Cure()
 	// std::cout << "Cure destructor called" << std::endl;
 }
 
-Cure &	Cure::operator=( Cure const & rhs )
+Cure &	Cure::operator=( Cure const &rhs )
 {
 	// std::cout << "Cure assignment called" << std::endl;
 	if( this != &rhs )
