@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:20:21 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 18:12:45 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/29 07:50:32 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Contact
 		int			_index;
 
 	public:
-		Contact( void );
-		~Contact( void );
+		Contact();
+		~Contact();
 		void		setContact(std::string attributes[5], int index);
 		std::string	getFirstName( void ) const;
 		std::string	getLastName( void ) const;

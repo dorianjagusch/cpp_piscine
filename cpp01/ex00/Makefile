@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 14:27:30 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/21 17:03:56 by djagusch         ###   ########.fr        #
+#    Updated: 2023/08/29 09:27:06 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME = ex00
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@c++ -Wall -Werror -Wextra -std=c++98 $(SRC) -o $@ -g
+	@c++ -Wall -Werror -Wextra -std=c++98 $(SRC) -o $@
 
 clean:
 

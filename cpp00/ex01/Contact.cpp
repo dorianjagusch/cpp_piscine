@@ -6,13 +6,13 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 17:20:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 13:47:42 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/29 08:01:51 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact( void ){
+Contact::Contact(){
 	_first_name = "";
 	_last_name = "";
 	_nick_name = "";
@@ -21,10 +21,10 @@ Contact::Contact( void ){
 	_index = -1;
 }
 
-Contact::~Contact( void ){
+Contact::~Contact(){
 }
 
-void Contact::setContact(std::string attributes[5], int index)
+void Contact::setContact( std::string attributes[5], int index )
 {
 	_first_name = attributes[0];
 	_last_name = attributes[1];

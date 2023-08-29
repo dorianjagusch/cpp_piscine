@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 14:02:01 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/25 12:17:11 by djagusch         ###   ########.fr        #
+#    Updated: 2023/08/29 17:14:34 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME = bsp
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@c++ -Wall -Werror -Wextra -std=c++98 $(SRC) -o $@ -fsanitize=address -g -static-libasan
+	@c++ -Wall -Werror -Wextra -std=c++98 $(SRC) -o $@
 
 clean:
 

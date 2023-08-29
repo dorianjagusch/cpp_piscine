@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:24:32 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 16:59:55 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/29 18:14:00 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int main( void )
 	horde = zombieHorde(n, "Boaty McBoatface");
 	if (horde) {
 		for (int i = 0; i < n; i++){
-			; //horde[i].announce();
+			horde[i].announce();
 		}
 		delete [] horde;
 	}

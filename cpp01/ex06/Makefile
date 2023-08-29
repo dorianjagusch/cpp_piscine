@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/21 22:54:58 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/21 22:55:20 by djagusch         ###   ########.fr        #
+#    Updated: 2023/08/29 18:37:33 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC := main \
 
 SRC := $(addsuffix .cpp,$(SRC))
 
-NAME = harl
+NAME = harlFilter
 
 all: $(NAME)
 

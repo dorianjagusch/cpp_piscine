@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:57:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 17:53:01 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/29 09:06:12 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 std::string getInput( void );
 
-PhoneBook::PhoneBook( void ){
+PhoneBook::PhoneBook(){
 	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
 	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 	std::cout << std::endl;
@@ -61,14 +61,14 @@ PhoneBook::PhoneBook( void ){
 	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 }
 
-PhoneBook::~PhoneBook( void )
+PhoneBook::~PhoneBook()
 {
 	std::cout << "See you next time" << std::endl;
 	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
 	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 }
 
-bool	PhoneBook::check_phone_num(std::string phone_num){
+bool	PhoneBook::check_phone_num( std::string phone_num ){
 	for (size_t i = 0; i < phone_num.length(); i++){
 		if ((i == 0 && phone_num[i] != '+' && !isdigit(phone_num[i]))
 			|| ( i != 0 && !isdigit(phone_num[i]) && !isspace(phone_num[i])))
@@ -78,7 +78,7 @@ bool	PhoneBook::check_phone_num(std::string phone_num){
 }
 
 void PhoneBook::add( void ){
-	static int	index = 0;
+	static int	index;
 	std::string prompts[5] = {
 		"Enter first name: ",
 		"Enter last name: ",
@@ -88,28 +88,29 @@ void PhoneBook::add( void ){
 	};
 	std::string	attributes[5];
 
-	for (int i = 0; i < 5; i++)
+	for ( int i = 0; i < 5; i++ )
 	{
-		if (!std::cin.eof())
+		if ( !std::cin.eof() )
 		{
-			if (i != 3) {
+			if ( i != 3 ) {
 				do {
 					std::cout << prompts[i] << std::flush;
 					attributes[i] = getInput();
-				} while (!std::cin.eof() && attributes[i].length() == 0);
+			} while ( !std::cin.eof() && attributes[i].length() == 0 );
 			}
 			else {
 				do {
 					std::cout << prompts[i] << std::flush;
 					attributes[i] = getInput();
-				} while (!std::cin.eof() && (attributes[i].length() == 0 || !check_phone_num(attributes[i])));
+				} while ( !std::cin.eof() && (attributes[i].length() == 0
+					|| !check_phone_num(attributes[i])) );
 			}
 		}
 	}
-	if (!std::cin.eof()){
-		_contacts[index].setContact(attributes, (index % 8) + 1);
-		index = (index + 1) % 8;
-		if (NumContacts < 8)
+	if ( !std::cin.eof() ){
+		_contacts[index].setContact( attributes, ( index % 8 ) + 1 );
+		index = ( index + 1 ) % 8;
+		if ( NumContacts < 8 )
 			NumContacts++;
 	}
 }
@@ -120,28 +121,28 @@ void PhoneBook::_printBook( void ) const {
 	std::string	nick_name;
 
 	std::cout << "=============================================" << std::endl;
-	std::cout << "|" << std::setw(10) << "Index" << "|" << std::setw(10) << "First Name" << "|";
-	std::cout << std::setw(10) << "Last Name" << "|" << std::setw(10) << "Nickname" << "|" << std::endl;
+	std::cout << "|" << std::setw( 10 ) << "Index" << "|" << std::setw( 10 ) << "First Name" << "|";
+	std::cout << std::setw( 10 ) << "Last Name" << "|" << std::setw( 10 ) << "Nickname" << "|" << std::endl;
 	std::cout << "_____________________________________________" << std::endl;
 
-	for (int i = 0; i < 8; i++){
-		if (_contacts[i].getIndex() < 0){
-			if (i == 0)
+	for ( int i = 0; i < 8; i++ ){
+		if ( _contacts[i].getIndex() < 0 ){
+			if ( i == 0 )
 				std::cout << "NO DATA" << std::endl;
 			break;
 		}
 
 		first_name = _contacts[i].getFirstName();
-		first_name = first_name.length() <= 10 ? first_name : first_name.substr(0,9).append(1, '.');
+		first_name = first_name.length() <= 10 ? first_name : first_name.substr( 0, 9).append( 1, '.' );
 		last_name = _contacts[i].getLastName();
-		last_name = last_name.length() <= 10 ? last_name : last_name.substr(0,9).append(1, '.');
+		last_name = last_name.length() <= 10 ? last_name : last_name.substr( 0, 9 ).append( 1, '.' );
 		nick_name = _contacts[i].getNickName();
-		nick_name = nick_name.length() <= 10 ? nick_name : nick_name.substr(0,9).append(1, '.');
+		nick_name = nick_name.length() <= 10 ? nick_name : nick_name.substr( 0, 9 ).append( 1, '.' );
 
-		std::cout << "|" << std::setw(10) << _contacts[i].getIndex();
-		std::cout << "|" << std::setw(10) << first_name;
-		std::cout << "|" << std::setw(10) << last_name;
-		std::cout << "|" << std::setw(10) << nick_name;
+		std::cout << "|" << std::setw( 10 ) << _contacts[i].getIndex();
+		std::cout << "|" << std::setw( 10 ) << first_name;
+		std::cout << "|" << std::setw( 10 ) << last_name;
+		std::cout << "|" << std::setw( 10 ) << nick_name;
 		std::cout << "|" << std::endl;
 	}
 
@@ -153,22 +154,22 @@ void PhoneBook::search( void ) const {
 	int			user_index;
 
 	_printBook();
-	if (NumContacts > 0)
+	if ( NumContacts > 0 )
 	{
 		std::cout << "Which contact would you like to display?" << std::endl;
-		while (!std::cin.eof()){
+		while ( !std::cin.eof() ){
 			std::cout << "Enter Index: " << std::flush;
 			user_string = getInput();
-			user_index = atoi(user_string.c_str());
-			if (user_string.length() == 1 && user_index > 0 && user_index <= NumContacts)
+			user_index = atoi( user_string.c_str() );
+			if ( user_string.length() == 1 && user_index > 0 && user_index <= NumContacts )
 				break ;
 			else
 				std::cout << "Invalid entry. " << std::flush;
 		}
-		if (!std::cin.eof())
+		if ( !std::cin.eof() )
 			_contacts[user_index - 1].printContact();
 	}
-	else if (!std::cin.eof())
+	else if ( !std::cin.eof() )
 		std::cout << "No contact to display." << std::endl;
 }
 
