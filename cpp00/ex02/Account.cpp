@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:33:10 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 23:12:37 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 	if (withdrawal > _amount)
 	{
 		std::cout << "refused" << std::endl;
-		return (false);
+		return false;
 	}
 	_amount -= withdrawal;
 	_nbWithdrawals++;
@@ -88,12 +88,12 @@ bool	Account::makeWithdrawal( int withdrawal )
 				<< ";amount:" << _amount
 				<< ";nb_withdrawals:" << _nbWithdrawals
 				<< std::endl;
-	return (true);
+	return true;
 }
 
 int		Account::checkAmount( void ) const
 {
-	return (_amount);
+	return _amount;
 }
 
 void	Account::displayStatus( void ) const
@@ -108,22 +108,22 @@ void	Account::displayStatus( void ) const
 
 int	Account::getNbAccounts( void )
 {
-	return (_nbAccounts);
+	return _nbAccounts;
 }
 
 int	Account::getTotalAmount( void )
 {
-	return (_totalAmount);
+	return _totalAmount;
 }
 
 int	Account::getNbDeposits( void )
 {
-	return (_totalNbDeposits);
+	return _totalNbDeposits;
 }
 
 int	Account::getNbWithdrawals( void )
 {
-	return (_totalNbWithdrawals);
+	return _totalNbWithdrawals;
 }
 
 void	Account::displayAccountsInfos( void )

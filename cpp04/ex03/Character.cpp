@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:30:16 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ Character &	Character::operator=( Character const &rhs )
 		// to anything or anyone and would thus needlessly consume spac
 		// if were to I make them identical
 	}
-	return (*this);
+	return *this;
 }
 
 std::string const &Character::getName() const
 {
-	return (_name);
+	return _name;
 }
 
 void Character::equip(AMateria* m)

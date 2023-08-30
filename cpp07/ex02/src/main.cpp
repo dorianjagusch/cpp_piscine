@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 18:48:48 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 20:17:43 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:46:00 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int main( void )
 		str_array[i] = "Hello";
 	}
 	std::cout << str_array << std::endl;
-	// try {
-	// 	std::cout << int_array[12] << std::endl;
-	// } catch (Array<int>::OutOfBoundsException & e){
-	//  	std::cout << "out of BoundsAccess" << std::endl;
-	// }
-	return (0);
+	try {
+		std::cout << int_array[12] << std::endl;
+	} catch (Array<int>::OutOfBoundsException & e){
+	 	std::cout << "out of bounds access" << std::endl;
+	}
+	return 0;
 }

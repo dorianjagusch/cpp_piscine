@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:45:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:39:44 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ Base * generate( void )
 	int random = std::rand() % 3;
 	try {
 		if (random == 0)
-			return (new A);
+			return new A;
 		else if (random == 1)
-			return (new B);
+			return new B;
 		else
-			return (new C);
+			return new C;
 	}
 	catch (std::exception &e){
 		std::cout << e.what() << std::endl;
-		return (NULL);
+		return NULL;
 	}
 }
 
@@ -102,5 +102,5 @@ int main(void)
 		if (array[i])
 			delete array[i];
 	}
-	return (0);
+	return 0;
 }

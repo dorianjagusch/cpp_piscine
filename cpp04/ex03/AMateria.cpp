@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:29:41 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ AMateria &	AMateria::operator=( AMateria const &rhs )
 	// std::cout << "AMateria assignment called" << std::endl;
 	if( this != &rhs )
 		_type = rhs.getType();
-	return (*this);
+	return *this;
 }
 
 std::string const &	AMateria::getType() const
 {
 	// std::cout << "AMateria copier called" << std::endl;
-	return (_type);
+	return _type;
 }
 
 void		AMateria::use( ICharacter& target )

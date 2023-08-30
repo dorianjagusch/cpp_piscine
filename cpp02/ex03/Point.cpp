@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:39:43 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ Point &	Point::operator=( Point const &rhs )
 		(Fixed) _x = rhs.getX();
 		(Fixed) _y = rhs.getY();
 	}
-	return (*this);
+	return *this;
 }
 
 Fixed Point::getX( void ) const
 {
-	return (_x);
+	return _x;
 }
 
 Fixed Point::getY( void ) const
 {
-	return (_y);
+	return _y;
 }
 
 std::ostream &operator<<( std::ostream &out, Point const &point )
 {
 	out  << "x: " << std::setw(8) << point.getX() << "\ty: " << std::setw(8) << point.getY();
-	return (out);
+	return out;
 }

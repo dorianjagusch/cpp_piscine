@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:25:33 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 18:39:09 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 08:22:52 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class HumanA
 		Weapon& _weapon;
 
 	public:
-		HumanA(std::string name, Weapon& weapon);
+		HumanA( std::string name, Weapon& weapon );
 		~HumanA();
 		void attack( void ) const;
 };

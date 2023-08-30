@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:13:56 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ MateriaSource &	MateriaSource::operator=( MateriaSource const &rhs )
 		// if were to make them identical
 		}
 	}
-	return (*this);
+	return *this;
 }
 
 void MateriaSource::learnMateria( AMateria* materia )
@@ -66,9 +66,9 @@ AMateria* MateriaSource::createMateria( std::string const &type )
 	for ( int i = 0; i < 4; i++){
 		if (_learned[i] != NULL && _learned[i]->getType() == type){
 			// std::cout << "Materia source created " << type << std::endl;
-			return (_learned[i]->clone());
+			return _learned[i]->clone();
 		}
 	}
 	std::cout << "This materia source does not know " << type << std::endl;
-	return (NULL);
+	return NULL;
 }

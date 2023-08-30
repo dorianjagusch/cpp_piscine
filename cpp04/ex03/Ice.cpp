@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:31:17 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Ice &	Ice::operator=( Ice const &rhs )
 	// std::cout << "Ice assignment called" << std::endl;
 	if( this != &rhs )
 		_type = rhs.getType();
-	return (*this);
+	return *this;
 }
 
 void		Ice::use( ICharacter& target )
@@ -47,5 +47,5 @@ AMateria*	Ice::clone() const
 
 	if (!ice)
 		std::cerr << "Memory allocation failed" << std::endl;
-	return (ice);
+	return ice;
 }

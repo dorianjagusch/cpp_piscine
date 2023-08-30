@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 19:11:53 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:40 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Converter &	Converter::operator=( Converter const &rhs )
 {
 	if ( this != &rhs )
 		static_cast<void>( rhs );
-	return (*this);
+	return *this;
 }
 
 bool		Converter::_isOverflow( std::string const &input )
@@ -37,18 +37,18 @@ bool		Converter::_isOverflow( std::string const &input )
 
 	if ( tmp > std::numeric_limits< int >::max()
 		|| std::numeric_limits< int >::min() > tmp )
-		return ( true );
-	return ( false );
+		return true ;
+	return false ;
 }
 
 bool	Converter::_isChar( std::string const &input )
 {
 
 	if ( input.length() != 1 || isdigit(input[0]) )
-		return ( false );
+		return false ;
 	if ( !std::isprint(input[0]))
-		return ( false );
-	return ( true );
+		return false ;
+	return true ;
 }
 
 bool	Converter::_isInt( std::string const &input )
@@ -61,9 +61,9 @@ bool	Converter::_isInt( std::string const &input )
 	for ( i = offset; i < input.length(); i++ )
 	{
 		if ( !std::isdigit(input[i]) )
-			return ( false );
+			return false ;
 	}
-	return ( true );
+	return true ;
 }
 
 bool	Converter::_isFloat( std::string const &input )
@@ -73,19 +73,19 @@ bool	Converter::_isFloat( std::string const &input )
 	size_t	i = 0;
 
 	if ( _isPseudoLiteral(input, 'f') )
-		return ( true );
+		return true ;
 	if ( input[0] == '+' || input[0] == '-' )
 		offset++;
 	for ( i = offset; i < input.length() - 1; i++ )
 	{
 		if ( !std::isdigit(input[i]) && input[i] != '.' )
-			return ( false );
+			return false ;
 		else if ( input[i] == '.' )
 			dot++;
 	}
 	if ( input[input.length() - 1] != 'f' )
-		return ( false );
-	return ( true );
+		return false ;
+	return true ;
 }
 
 bool	Converter::_isDouble( std::string const &input)
@@ -95,17 +95,17 @@ bool	Converter::_isDouble( std::string const &input)
 	size_t	i = 0;
 
 	if (_isPseudoLiteral(input, 'd'))
-		return ( true );
+		return true ;
 	if (input[0] == '+' || input[0] == '-')
 		offset++;
 	for ( i = offset; i < input.length(); i++ )
 	{
 		if ( !std::isdigit(input[i]) && input[i] != '.' )
-			return ( false );
+			return false ;
 		else if ( input[i] == '.' )
 			dot++;
 	}
-	return ( true );
+	return true ;
 }
 
 bool	Converter::_isPseudoLiteral(std::string const &input, const int c)
@@ -113,9 +113,9 @@ bool	Converter::_isPseudoLiteral(std::string const &input, const int c)
 	if ( (c == 'f' && ( input == "inff" || input == "-inff" || input == "nanf") )
 		|| ( c == 'd' && ( input == "inf" || input == "-inf" || input == "nan") ) ){
 		_pseudo_literal = true;
-		return ( true );
+		return true ;
 	}
-	return ( false );
+	return false ;
 }
 
 bool	Converter::_isImpossible( std::string const &input)
@@ -136,10 +136,10 @@ bool	Converter::_isImpossible( std::string const &input)
 			case DOUBLE:
 				_double = strtod( input.c_str(), NULL );
 		}
-		return ( false );
+		return false ;
 	}
 	catch (std::exception &e){
-		return ( true );
+		return true ;
 	}
 }
 

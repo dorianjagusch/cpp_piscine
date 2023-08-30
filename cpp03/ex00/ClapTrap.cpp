@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 21:30:20 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ ClapTrap::ClapTrap( ClapTrap const &src )
 
 std::string ClapTrap::getName( void ) const
 {
-	return (_name);
+	return _name;
 }
 
 ClapTrap &	ClapTrap::operator=( ClapTrap const &rhs )
 {
 	if (this->_name != rhs.getName())
 		*this = rhs;
-	return (*this);
+	return *this;
 }
 
 ClapTrap::~ClapTrap()

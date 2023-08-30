@@ -22,12 +22,12 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 
 	Fixed denominator(bc_y * ac_x + cb_x * ac_y);
 	if (denominator >= 0)
-		return (false);
+		return false;
 
 	Fixed pc_y( point.getY() - c.getY() );
 	Fixed pc_x( point.getX() - c.getX() );
 	Fixed bcoord_a  = (bc_y * pc_x + cb_x * pc_x) / denominator;
 	Fixed bcoord_b = (ac_x * pc_x - ac_y * pc_x) / denominator;
 
-	return ((Fixed(1) - bcoord_a - bcoord_b) >= 0);
+	return Fixed(1) - bcoord_a - bcoord_b>= 0;
 }

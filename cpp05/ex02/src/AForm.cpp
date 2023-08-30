@@ -49,7 +49,7 @@ AForm &	AForm::operator=( AForm const &rhs )
 {
 	if( this != &rhs )
 		_signed = rhs._signed;
-	return (*this);
+	return *this;
 }
 
 std::ostream &operator<<( std::ostream &out, AForm const &rhs )
@@ -57,7 +57,7 @@ std::ostream &operator<<( std::ostream &out, AForm const &rhs )
 	out	<< "AForm " << rhs.getName() << " signed:" << rhs.getSigned()
 		<< " sign grade:" << rhs.getSignGrade() << "exec grade: " << rhs.getExecGrade()
 		<< std::endl;
-	return (out);
+	return out;
 }
 
 std::string	AForm::getName( void ) const

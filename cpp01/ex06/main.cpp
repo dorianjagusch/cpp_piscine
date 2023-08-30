@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 22:55:52 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/23 14:12:55 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int ac, char **av)
 	if (ac != 2)
 	{
 		std::cout << "Provide one argument, please" << std::endl;
-		return (1);
+		return 1;
 	}
 	while (input < 4)
 	{
@@ -57,5 +57,5 @@ int main(int ac, char **av)
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
-	return (0);
+	return 0;
 }

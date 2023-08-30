@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:13:40 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 18:12:31 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 08:20:24 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Zombie
 		std::string _name;
 
 	public:
-		Zombie(std::string name);
+		Zombie( std::string name );
 		~Zombie( void );
 		void announce ( void );
 };

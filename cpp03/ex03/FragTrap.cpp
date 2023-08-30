@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:29:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:35:24 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ FragTrap::FragTrap( FragTrap const &src ) : ClapTrap(src)
 
 FragTrap::~FragTrap()
 {
- 	std::cout << "After a long arduous fight against the forces of nature.";
+ 	std::cout << "After a long arduous fight against the dark forces.";
 	std::cout << " FragTrap " << _name << " succumbs to their injuries..." << std::endl;
 }
 
@@ -40,7 +40,7 @@ FragTrap &	FragTrap::operator=( FragTrap const &rhs )
 {
 	if (this->_name != rhs.getName())
 		*this = rhs;
-	return (*this);
+	return *this;
 }
 
 void	FragTrap::HighFiveGuys( void )

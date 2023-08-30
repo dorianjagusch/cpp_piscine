@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:21:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 14:33:42 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:45:21 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int main( void ){
 	std::string		strings[] = {"Hello", "bye", "\n", ""};
 
 	std::cout << "Integters: " << std::endl;
-	::iter(ints, 5, printArray);
+	::iter( ints, 5, printArray );
 	std::cout << std::endl << "Floats: " << std::endl;
-	::iter(floats, 7, printArray);
+	::iter( floats, 7, printArray );
 	std::cout << std::endl << "Chars: " << std::endl;
-	::iter(chars, 6, printArray);
+	::iter( chars, 6, printArray );
 	std::cout << std::endl << "Strings: " << std::endl;
-	::iter(strings, 4, printArray);
+	::iter( strings, 4, printArray );
 
-	return (0);
+	return 0;
 }

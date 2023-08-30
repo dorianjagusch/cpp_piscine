@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:43:35 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/29 07:48:46 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int main(int ac, char **av)
 			std::cout << static_cast<char>( std::toupper(str[j]) );
 	}
 	std::cout << std::endl;
-	return (0);
+	return 0;
 }

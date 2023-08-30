@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:27:27 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 18:45:10 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 08:23:17 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ class HumanB
 		std::string _name;
 		Weapon* _weapon;
 	public:
-		HumanB(std::string name);
+		HumanB( std::string name );
 		~HumanB();
-		void setWeapon(Weapon& weapon);
+		void setWeapon( Weapon& weapon );
 		void attack( void ) const;
 };
 

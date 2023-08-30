@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:24:32 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/21 14:44:14 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int main( void )
 	zombie2->announce();
 	randomChump("Steve");
 	delete zombie2;
-	return (0);
+	return 0;
 }

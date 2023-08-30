@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:56:17 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 20:19:18 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:40 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	class OutOfBoundsException : public std::exception{
 		public:
 			virtual const char *what( void ) const throw() {
-				return ("Out of bounds");
+				return "Out of bounds";
 			};
 	};
 
@@ -84,7 +84,7 @@ Array<T> &Array<T>::operator=( Array<T> const &rhs )
 		}
 		_size = rhs._size;
 	}
-	return (*this);
+	return *this;
 }
 
 template< typename T>
@@ -92,13 +92,13 @@ T &Array<T>::operator[]( unsigned int n ) const throw(OutOfBoundsException)
 {
 	if ( n >= _size )
 		throw( OutOfBoundsException() );
-	return ( _array[n] );
+	return _array[n] ;
 }
 
 template<class T>
 unsigned int Array<T>::size( void ) const
 {
-	return ( _size );
+	return _size ;
 }
 
 template<typename T>
@@ -110,7 +110,7 @@ std::ostream &	operator<<( std::ostream & o, Array<T> const &rhs)
 		else
 			o << rhs[i];
 	}
-	return (o);
+	return o;
 }
 
 #endif

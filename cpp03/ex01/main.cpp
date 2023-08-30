@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 21:21:27 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/22 23:07:58 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ int main(void){
 		scavvy.takeDamage(std::numeric_limits<unsigned int>::max());
 	}
 
-	return (0);
+	return 0;
 }

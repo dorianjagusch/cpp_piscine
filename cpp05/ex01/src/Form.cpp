@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:20:11 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Form &	Form::operator=( Form const &rhs )
 {
 	if( this != &rhs )
 		_signed = rhs._signed;
-	return (*this);
+	return *this;
 }
 
 std::ostream &operator<<( std::ostream &out, Form const &rhs )
@@ -56,7 +56,7 @@ std::ostream &operator<<( std::ostream &out, Form const &rhs )
 	out	<< "Form " << rhs.getName() << " signed:" << rhs.getSigned()
 		<< " sign grade:" << rhs.getSignGrade() << "exec grade: " << rhs.getExecGrade()
 		<< std::endl;
-	return (out);
+	return out;
 }
 
 std::string	Form::getName( void ) const
@@ -82,13 +82,13 @@ int	Form::getExecGrade( void ) const
 bool	Form::beSigned(Bureaucrat &bureaucrat) throw(GradeTooHighException, GradeTooLowException)
 {
 	if (_signed)
-		return (true);
+		return true;
 	if (bureaucrat.getGrade() >= 1 && bureaucrat.getGrade() < 151
 		&& bureaucrat.getGrade() <= _sign_grade)
 	{
 		_signed = true;
-		return (false);
+		return false;
 	}
 	throw (GradeTooLowException());
-	return (false);
+	return false;
 }

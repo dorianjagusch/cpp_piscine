@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 14:02:01 by djagusch          #+#    #+#              #
-#    Updated: 2023/08/22 14:22:59 by djagusch         ###   ########.fr        #
+#    Updated: 2023/08/30 08:15:14 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME = fixed_point
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@c++ -Wall -Werror -Wextra -std=c++98 $(SRC) -o $@
+	@c++ -Wall -Werror -Wextra $(SRC) -o $@
 
 clean:
 

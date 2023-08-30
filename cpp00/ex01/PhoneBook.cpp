@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:57:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/29 09:06:12 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ bool	PhoneBook::check_phone_num( std::string phone_num ){
 	for (size_t i = 0; i < phone_num.length(); i++){
 		if ((i == 0 && phone_num[i] != '+' && !isdigit(phone_num[i]))
 			|| ( i != 0 && !isdigit(phone_num[i]) && !isspace(phone_num[i])))
-			return (false);
+			return false;
 	}
-	return (true);
+	return true;
 }
 
 void PhoneBook::add( void ){

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 09:58:23 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/25 17:23:11 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ int main()
 	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
 		delete array[i];
 	}
-	return (0);
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 10:30:21 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int main( void )
 		std::cout	<< "Data:\t\t" << test << std::endl
 					<< "deserialised:\t" << test2 << std::endl;
 		delete test;
-		return (0);
+		return 0;
 	}
 	catch ( std::exception &e ){
 		std::cout << e.what() << std::endl;
-		return (1);
+		return 1;
 	}
 }

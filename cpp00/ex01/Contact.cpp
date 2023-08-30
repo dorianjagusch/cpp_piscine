@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 17:20:39 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/29 08:01:51 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,27 @@ void Contact::setContact( std::string attributes[5], int index )
 }
 
 std::string Contact::getFirstName( void ) const {
-	return (_first_name);
+	return _first_name;
 }
 
 std::string Contact::getLastName( void ) const {
-	return (_last_name);
+	return _last_name;
 }
 
 std::string Contact::getNickName( void ) const {
-	return (_nick_name);
+	return _nick_name;
 }
 
 std::string Contact::getPhoneNumber( void ) const {
-	return (_phone_num);
+	return _phone_num;
 }
 
 std::string Contact::getSecret( void ) const {
-	return (_secret);
+	return _secret;
 }
 
 int Contact::getIndex( void ) const {
-	return (_index);
+	return _index;
 }
 
 void Contact::printContact( void ) const {

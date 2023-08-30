@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 13:13:31 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/29 09:01:52 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ std::string getInput( void )
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			return ((std::string)"");
+			return (std::string)"";
 		}
 		else if (std::cin.fail())
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Input too long. Try again." << std::endl;
-			return ((std::string)"");
+			return (std::string)"";
 		}
 	}
 	return input;
@@ -61,5 +61,5 @@ int main( void )
 			std::cout << std::endl;
 		input = getInput();
 	} while (!std::cin.eof() && input != "EXIT");
-	return (0);
+	return 0;
 }
