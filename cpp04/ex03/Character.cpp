@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:30:16 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:59:33 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ Character &	Character::operator=( Character const &rhs )
 		for (int i = 0; i < 4; i++){
 			if (_inventory[i])
 				delete _inventory[i];
-			_inventory[i] = rhs._inventory[i];
+			_inventory[i] = rhs._inventory[i]->clone();
 		}
 		// I decided to not transfer the unequipped materials as they are not accessible
 		// to anything or anyone and would thus needlessly consume spac
@@ -87,7 +87,7 @@ void Character::equip(AMateria* m)
 			break ;
 	}
 	if (i < 4)
-		_inventory[i] = m;
+		_inventory[i] = m->clone();
 	else
 		std::cout << _name << " cannot equip " << m->getType() << " anymore" << std::endl;
 }
