@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/05 13:45:03 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/05 14:53:44 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ INC = $(addprefix $S/,$(addsuffix .hpp,easyfind))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))
 
-NAME = easyFind
+NAME = ex00
 
 all: $(NAME)
 

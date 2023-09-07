@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:56:17 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:49:33 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ Array<T>::Array( unsigned int const &n )
 {
 	_size = n;
 	_array = new T[n];
-	// for ( unsigned int i = 0; i < _size; i++ ){
-	// 	_array[i] = static_cast<T>(0);
-	// };
 	return ;
 }
 

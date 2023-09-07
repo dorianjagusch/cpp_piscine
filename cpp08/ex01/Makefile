@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/05 13:44:41 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/05 14:53:50 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,17 @@ XFLAGS = -g -fsanitize=address -static-libasan -Wconversion -Wshadow
 
 RM = /bin/rm
 
-FILES :=
+FILES := Span
 
 S = src
 O = obj
 
 SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES) main))
-INC = $(addprefix $S/,$(addsuffix .hpp,Array))
+INC = $(addprefix $S/,$(addsuffix .hpp,$(FILES)))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))
 
-NAME = array
+NAME = ex01
 
 all: $(NAME)
 
