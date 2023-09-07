@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:13:56 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:09:18 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void MateriaSource::learnMateria( AMateria* materia )
 {
 	for ( int i = 0; i < 4; i++){
 		if (!_learned[i]){
-			_learned[i] = materia;
+			_learned[i] = materia->clone();
 			return ;
 		}
 	}

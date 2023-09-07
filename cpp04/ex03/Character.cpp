@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:30:16 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/05 11:59:33 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:08:17 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ void Character::equip(AMateria* m)
 		if (!_inventory[i])
 			break ;
 	}
-	if (i < 4)
+	if (i < 4){
 		_inventory[i] = m->clone();
-	else
+		std::cout << _name << " equipped " << m->getType() << std::endl;
+	} else
 		std::cout << _name << " cannot equip " << m->getType() << " anymore" << std::endl;
 }
 

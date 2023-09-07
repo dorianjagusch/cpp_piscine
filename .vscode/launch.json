@@ -8,14 +8,12 @@
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/cpp01/ex04/sed",
-			"args": ["testfiles/hello.txt", "\n", "Frog"],
+			"program": "${workspaceFolder}/cpp08/ex01/ex01",
+			"MIMode": "lldb",
 			"stopAtEntry": true,
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb"
 		}
-
 	]
 }

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:45:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:39:44 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:14:46 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,20 @@ void identify( Base* p )
 
 void identify( Base& p )
 {
+	Base temp;
+	
 	try {
-		dynamic_cast<A&>(p);
+		temp = dynamic_cast<A&>(p);
 		std::cout << "Reference is of type A" << std::endl;
 		return;
 	} catch (std::exception &e) {};
 	try {
-		dynamic_cast<B&>(p);
+		temp = dynamic_cast<B&>(p);
 		std::cout << "Reference is of type B" << std::endl;
 		return;
 	} catch (std::exception &e) {};
 	try {
-		dynamic_cast<C&>(p);
+		temp = dynamic_cast<C&>(p);
 		std::cout << "Reference is of type C" << std::endl;
 		return;
 	} catch (std::exception &e) {
