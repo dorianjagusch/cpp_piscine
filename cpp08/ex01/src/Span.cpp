@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:25:38 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/07 13:22:13 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:54:04 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ unsigned int	Span::shortestSpan( void ) const {
 }
 
 unsigned int	Span::longestSpan( void ) const {
-	
+
 	if (_values.size() < 2)
 		throw ( NumberOfElementsException() );
-	unsigned int result  = static_cast<unsigned int>( *max_element( _first, _last ) ) - static_cast<unsigned int>( *min_element( _first, _last ) );
+	unsigned int max = static_cast<unsigned int>( *max_element( _values.begin(), _values.end()));
+	unsigned int min = static_cast<unsigned int>( *min_element( _values.begin(), _values.end()));
+	unsigned int result  = max - min;
 	return result;
 }
 
