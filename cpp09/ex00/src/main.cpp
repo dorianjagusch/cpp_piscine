@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/09 16:59:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/12 18:26:18 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 #include <string>
 #include <map>
 
-
-int main(int ac, char **argv)
-{
-
+int main(int ac, char **argv){
 	if (ac != 2){
 		std::cerr << "Error: Provide one input file, please" << std::endl;
 		return 1;
@@ -33,9 +30,9 @@ int main(int ac, char **argv)
 	BitcoinExchange	btc;
 	std::string		line;
 	while ( !inFile.eof() ){
-		getline(inFile, line );
-		if (!line.empty())
-			std::cout << btc.getValue(line) << std::endl;
+		getline( inFile, line );
+		if ( !line.empty() )
+			btc.getValue( line );
 	}
 	inFile.close();
 	return 0;
