@@ -69,6 +69,8 @@
 		"list": "cpp",
 		"map": "cpp",
 		"queue": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"memory_resource": "cpp",
+		"random": "cpp"
 	}
 }

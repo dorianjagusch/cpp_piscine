@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/08 18:19:54 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/09 16:59:39 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,24 @@
 
 int main(int ac, char **argv)
 {
-	std::ifstream	rawData;
-	std::map<std::string, float>	dataBase;
-
 
 	if (ac != 2){
 		std::cerr << "Error: Provide one input file, please" << std::endl;
 		return 1;
 	}
-
-	rawData.open("data.csv", std::fstream::in);
-	if (!rawData.is_open() || !rawData.good()){
+	std::ifstream inFile;
+	inFile.open( argv[1], std::fstream::in );
+	if ( !inFile.is_open() || !inFile.good() || inFile.peek() < 0 ){
 		std::cerr << "Failed to open input file." << std::endl;
 		return 2;
 	}
-
+	BitcoinExchange	btc;
+	std::string		line;
+	while ( !inFile.eof() ){
+		getline(inFile, line );
+		if (!line.empty())
+			std::cout << btc.getValue(line) << std::endl;
+	}
+	inFile.close();
 	return 0;
 }
