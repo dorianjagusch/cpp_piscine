@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 13:58:49 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/08 15:18:35 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/13 08:55:06 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MUTANTSTACK_HPP
 
 # include <stack>
+# include <deque>
 
 template< typename T, class Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container>
@@ -42,7 +43,6 @@ public:
 private:
 
 };
-
 template< typename T , class Container>
 MutantStack<T, Container>::MutantStack() : std::stack<T, Container>()
 {}
@@ -56,7 +56,6 @@ MutantStack<T, Container>::MutantStack( MutantStack<T, Container> const & src ) 
 template< typename T , class Container>
 MutantStack<T, Container>::~MutantStack()
 {}
-
 
 template< typename T , class Container>
 MutantStack<T, Container> &	MutantStack<T, Container>::operator=( MutantStack<T, Container> const & rhs )

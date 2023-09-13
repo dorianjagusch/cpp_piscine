@@ -6,12 +6,14 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/08 15:31:08 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/13 08:49:47 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 #include <iostream>
+#include <stack>
+#include <deque>
 #include <list>
 
 // For eval: replace iterator with reverse and const iterators
@@ -36,8 +38,8 @@ int main()
 		mstack.push(737);
 		mstack.push(737);
 		mstack.push(0);
-		MutantStack<int>::const_reverse_iterator it = mstack.rbegin();
-		MutantStack<int>::const_reverse_iterator ite = mstack.rend();
+		MutantStack<int>::const_iterator it = mstack.begin();
+		MutantStack<int>::const_iterator ite = mstack.end();
 		++it;
 		--it;
 		while (it != ite)
@@ -65,8 +67,8 @@ int main()
 		test_list.push_back(737);
 		test_list.push_back(737);
 		test_list.push_back(0);
-		std::list<int>::const_reverse_iterator it = test_list.rbegin();
-		std::list<int>::const_reverse_iterator ite = test_list.rend();
+		std::list<int>::const_iterator it = test_list.begin();
+		std::list<int>::const_iterator ite = test_list.end();
 		++it;
 		--it;
 		while (it != ite)

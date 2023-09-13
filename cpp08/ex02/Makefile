@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/08 15:33:24 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/13 08:05:04 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ COLOUR_END=\033[0m
 
 CC = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-XFLAGS = -g -Wconversion -Wshadow -fsanitize=address -static-libasan
+XFLAGS = -g -Wconversion -Wshadow -fsanitize=address -static-libsan
 
 RM = /bin/rm
 
@@ -26,8 +26,8 @@ FILES := MutantStack
 S = src
 O = obj
 
-SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES) main))
-INC = $(addprefix $S/,$(addsuffix .hpp,$(FILES)))
+SRC = $(addprefix $S/,$(addsuffix .cpp, main))
+INC = $(addprefix $S/,$(addsuffix .hpp, $(FILES)))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))
 

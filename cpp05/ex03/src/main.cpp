@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 09:58:23 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:39:04 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main()
 
 	AForm *array[] = {
 		millhouse.makeForm("robotomy request", "Bender"),
+		millhouse.makeForm("stuff", "Bender"),
 		millhouse.makeForm("robotomy request", "C3PO"),
 		millhouse.makeForm("robotomy request", "Wall-e"),
 		millhouse.makeForm("robotomy request", "Optimus Prime"),
@@ -43,50 +44,50 @@ int main()
 	};
 
 	std::cout << "============== Maggie ==============" << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		maggie.signForm(*(array[i]));
 	}
 	std::cout << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		maggie.executeForm(*(array[i]));
 	}
 	std::cout << std::endl;
 		std::cout << "============== Bart ==============" << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		bart.signForm(*(array[i]));
 	}
 	std::cout << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		bart.executeForm(*(array[i]));
 	}
 	std::cout << std::endl;
 		std::cout << "============== Lisa ==============" << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		lisa.signForm(*(array[i]));
 	}
 	std::cout << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		lisa.executeForm(*(array[i]));
 	}
 	std::cout << std::endl;
 		std::cout << "============== Marge ==============" << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		marge.signForm(*(array[i]));
 	}
 	std::cout << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		marge.executeForm(*(array[i]));
 	}
 	std::cout << std::endl;
 		std::cout << "============== Homer ==============" << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		homer.signForm(*(array[i]));
 	}
 	std::cout << std::endl;
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		homer.executeForm(*(array[i]));
 	}
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		delete array[i];
 	}
 
