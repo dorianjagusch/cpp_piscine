@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:31:40 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/12 17:48:45 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:48:27 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ class BitcoinExchange
 {
 public:
 	BitcoinExchange ();
-	BitcoinExchange( BitcoinExchange const & src );
 	~BitcoinExchange();
 
-	BitcoinExchange &	operator=( BitcoinExchange const & rhs );
-	void				getValue( std::string );
+	static void	initData( void );
+	static void	getValue( std::string );
 
 private:
 	enum error_code{
@@ -36,12 +35,24 @@ private:
 		large,
 		nan
 	};
-	std::map<std::string, float>	_dataBase;
-	std::string* split( const std::string& str );
-	bool checkDate( const std::string& str );
-	bool isDateValid( int year, int month, int day );
-	error_code checkAmount( const std::string& str );
-	void printNumError( error_code );
+	static std::map<int, float>	_dataBase;
+
+	static std::string*	split( const std::string & );
+
+	static error_code	checkAmount( const std::string & );
+	static bool			checkDate( const std::string & );
+	static void			printNumError( error_code );
+
+	static bool			isDateValid( int );
+	static bool			isLeapYear( int );
+	static int			dateToNum(std::string const & );
+	static std::string	numToDate(int);
+	static int			dateToYear( int );
+	static int			dateToMonth( int );
+	static int			dateToDay( int );
+
+	BitcoinExchange( BitcoinExchange const & );
+	BitcoinExchange &	operator=( BitcoinExchange const & );
 };
 
 #endif
