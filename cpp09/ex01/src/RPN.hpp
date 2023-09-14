@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:11:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/14 13:18:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/14 20:17:24 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <cstdlib>
 # include <algorithm>
 # include <exception>
+# include <limits>
 
 class RPN
 {
@@ -42,8 +43,13 @@ public:
 
 private:
 	static std::stack<long>	_stack;
+
+	static void			CheckCharacters( std::string & expr );
+	static bool			CheckArgument( std::string const expr );
 	static std::string*	split( const std::string& str, size_t num );
+	static void			ClearAllocs( std::string* split_expr );
 	static bool			isoperation( char const c );
+	static bool			isoperation( std::string const str );
 	static size_t		count_words( std::string str );
 	static void			calcResult( std::string *split_expr, size_t num);
 	static void			do_op( char op );
