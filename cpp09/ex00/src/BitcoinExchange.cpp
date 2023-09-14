@@ -6,14 +6,11 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:31:43 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/13 13:01:51 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/14 08:11:46 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
-#define MONTH_SCALE int( 10e1 )
-#define YEAR_SCALE int( 10e3 )
 
 std::map<int, float>	BitcoinExchange::_dataBase;
 
@@ -45,11 +42,7 @@ void BitcoinExchange::initData( void ){
 	int				flag = 1;
 
 	rawData.open( "data.csv", std::fstream::in );
-	if (!rawData.is_open() || !rawData.good() || rawData.peek() < 0){
-		std::cerr << "Failed to open input file." << std::endl;
-		rawData.close();
-		exit(1);
-	}
+	checkFileStream(rawData);
 	do{
 		getline( rawData, line );
 		if ( ( line.empty() && !rawData.eof() ) || flag ){
@@ -64,27 +57,10 @@ void BitcoinExchange::initData( void ){
 	rawData.close();
 }
 
-bool BitcoinExchange::checkDate( const std::string& str ) {
-
-	size_t i = 0;
-
-	for ( ; i < str.length(); i++ )
-	{
-		if ( i != 4 && i != 7){
-			if ( !isdigit( str.c_str()[i] ) )
-				break ;
-		} else if ( str.c_str()[i] != '-' )
-			return false;
-	}
-	if ( i != str.length() - 1 || str.c_str()[i] != ' ' || str.c_str()[i + 1] != '\0')
-		return false;
-	return isDateValid( dateToNum(str) );
-}
-
 BitcoinExchange::error_code BitcoinExchange::checkAmount( const std::string& str ) {
 
 	double val;
-	int period_flag;
+	int period_flag = 0;
 
 	if ( str.c_str()[0] != ' ' )
 		return nan;
@@ -92,6 +68,7 @@ BitcoinExchange::error_code BitcoinExchange::checkAmount( const std::string& str
 	{
 		if( str.c_str()[i] == '.' && !period_flag){
 			period_flag = 1;
+			i++;
 			continue;
 		}
 		if ( !isdigit( str.c_str()[i] ) && str.c_str()[1] != '-' )
@@ -122,107 +99,38 @@ void BitcoinExchange::printNumError(error_code error) {
 	}
 }
 
+void BitcoinExchange::printValue( std::string * cur_substr)
+{
+	double	amount;
+	double	value;
+
+	std::map<int, float>::const_iterator entry;
+	entry = _dataBase.lower_bound(dateToNum(*cur_substr));
+	if (entry != _dataBase.begin()) {
+		entry--;
+	}
+	value = atof(cur_substr[1].c_str());
+	amount = value * entry->second;
+	std::cout << *cur_substr << " => " << value << " = " << amount << std::endl;
+}
+
 void BitcoinExchange::getValue( std::string line ){
 
 	std::string	date;
-	double		amount;
 	error_code	num_error;
-	double		value;
 
 	std::string* cur_substr = split( line );
-	if ( cur_substr ){
-		if (!checkDate(cur_substr[0])) {
-			std::cerr << "Error: invalid date => " << cur_substr[0] << std::endl;
-		} else if ((num_error = checkAmount(cur_substr[1]))) {
-			printNumError(num_error);
-		} else {
-			std::map<int, float>::const_iterator entry;
-			entry = _dataBase.lower_bound(dateToNum(*cur_substr));
-			if (entry != _dataBase.begin()) {
-				entry--;
-			}
-			value = atof(cur_substr[1].c_str());
-			amount = value * entry->second;
-			std::cout << *cur_substr << " => " << value << " = " << amount << std::endl;
-			}
+	if ( !cur_substr )
+		return;
+	if (!checkDate(cur_substr[0])) {
+		std::cerr << "Error: invalid date => " << cur_substr[0] << std::endl;
+		return ;
 	}
+	if ((num_error = checkAmount(cur_substr[1]))) {
+		printNumError(num_error);
+		return ;
+	} 
+	printValue(cur_substr);
 	delete [] cur_substr;
 }
 
-std::string* BitcoinExchange::split( const std::string& str ) {
-
-	std::string* 		tokens = new std::string[4];
-	std::istringstream	stream(str);
-	std::string			token;
-	size_t				i = 0;
-
-	for( ; i < 4 && std::getline(stream, token, '|'); i++) {
-		tokens[i] = (token);
-	}
-	if ( i != 2){
-		delete [] tokens;
-		std::cerr << "Error: bad input => " << str << std::endl;
-		return NULL;
-	}
-	return (tokens);
-}
-
-//Date functions
-
-int BitcoinExchange::dateToYear( int date ){ return date / YEAR_SCALE; }
-
-int BitcoinExchange::dateToMonth( int date ){ return ( date - dateToYear(date) * YEAR_SCALE ) / MONTH_SCALE; }
-
-int BitcoinExchange::dateToDay( int date ){ return date - dateToYear(date) * YEAR_SCALE - dateToMonth(date) * MONTH_SCALE; }
-
-int BitcoinExchange::dateToNum(std::string const & str) {
-
-	int day, month, year, date;
-
-	year = atoi( str.c_str() );
-	month = atoi( str.c_str() + 5 );
-	day = atoi( str.c_str() + 8 );
-	date = year * YEAR_SCALE + month * MONTH_SCALE + day;
-	return date;
-}
-std::string BitcoinExchange::numToDate(int date) {
-
-	int day, month, year;
-	std::stringstream stream;
-
-	year = dateToYear( date );
-	month = dateToMonth( date );
-	day = dateToDay( date );
-	stream << year << '-' << month << '-' << day;
-	std::string result = stream.str();
-	std::cout << "result: " << date << std::endl;
-	return result;
-}
-
-bool BitcoinExchange::isLeapYear( int year ) {
-	
-	if ( year % 4 == 0 && ( year % 100 != 0 || year % 400 == 0 ) )
-		return true;
-	return false;
-}
-
-bool BitcoinExchange::isDateValid( int date ) {
-
-	int day, month, year;
-
-	day = dateToDay( date );
-	month = dateToMonth( date );
-	year = dateToYear( date );
-
-	if (year < 2009 || year > 2022)
-		return false;
-	if (month < 1 || month > 12)
-		return false;
-	if ( day < 1 
-	|| ( day > 31 && (month == 1 || month == 3 || month == 5 
-		|| month == 7 || month == 8 || month == 10 || month == 12) )
-	|| ( day > 30 && ( month == 4 || month == 6 || month == 9 || month == 11 ) )
-	|| ( day > 28 + static_cast<int>(isLeapYear(year)) && month == 2 ) )
-		return false;
-	return true;
-}

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/13 11:53:05 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/14 07:44:14 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int main(int ac, char **argv){
 	}
 	std::ifstream inFile;
 	inFile.open( argv[1], std::fstream::in );
-	if ( !inFile.is_open() || !inFile.good() || inFile.peek() < 0 ){
-		std::cerr << "Failed to open input file" << std::endl;
-		return 2;
-	}
+	BitcoinExchange::checkFileStream(inFile);
 	BitcoinExchange::initData();
 	std::string		line;
 	while ( !inFile.eof() ){

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:31:40 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/13 11:48:27 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/14 07:58:51 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@
 class BitcoinExchange
 {
 public:
-	BitcoinExchange ();
-	~BitcoinExchange();
-
+	static void	checkFileStream( std::ifstream & stream);
 	static void	initData( void );
 	static void	getValue( std::string );
 
@@ -42,6 +40,7 @@ private:
 	static error_code	checkAmount( const std::string & );
 	static bool			checkDate( const std::string & );
 	static void			printNumError( error_code );
+	static void			printValue( std::string * cur_substr);
 
 	static bool			isDateValid( int );
 	static bool			isLeapYear( int );
@@ -51,6 +50,8 @@ private:
 	static int			dateToMonth( int );
 	static int			dateToDay( int );
 
+	BitcoinExchange();
+	~BitcoinExchange();
 	BitcoinExchange( BitcoinExchange const & );
 	BitcoinExchange &	operator=( BitcoinExchange const & );
 };

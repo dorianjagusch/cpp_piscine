@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/13 07:43:47 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/14 08:02:43 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,17 @@ XFLAGS = -g -Wconversion -Wshadow -fsanitize=address
 
 RM = /bin/rm
 
-FILES := BitcoinExchange
+CLASS_FILES := BitcoinExchange
+
+FILES := BitcoinExchange \
+	dateHandling \
+	streamHandling
 
 S = src
 O = obj
 
 SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES) main))
-INC = $(addprefix $S/,$(addsuffix .hpp,$(FILES)))
+INC = $(addprefix $S/,$(addsuffix .hpp,$(CLASS_FILES)))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))
 
