@@ -6,11 +6,14 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/14 20:20:58 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 09:47:08 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+#define S_LONG_MIN "-9223372036854775808"
+#define S_LONG_MAX "9223372036854775807"
 
 std::stack<long> RPN::_stack;
 
@@ -65,7 +68,7 @@ std::string* RPN::split( const std::string& str, size_t num ) {
 				tokens[current++] = (token);
 			else{
 				delete [] tokens;
-				exit(6);
+				exit( 3 );
 			}
 		}
 	}
@@ -88,7 +91,8 @@ bool RPN::isoperation( std::string const str ){
 	return false;
 }
 
-long long RPN::add(long long const a, long long const b) throw ( OverflowException ){
+long long RPN::add(long long const a, long long const b)
+	throw ( OverflowException ){
 
 	if ( a + b > std::numeric_limits<long>::max()
 		|| a+ b < std::numeric_limits<long>::min())
@@ -96,7 +100,8 @@ long long RPN::add(long long const a, long long const b) throw ( OverflowExcepti
 	return a + b;
 }
 
-long long RPN::sub(long long const a, long long const b) throw ( OverflowException ) {
+long long RPN::sub(long long const a, long long const b)
+	throw ( OverflowException ) {
 
 	if ( a - b < std::numeric_limits<long>::min()
 		||  a - b > std::numeric_limits<long>::max() )
@@ -104,15 +109,17 @@ long long RPN::sub(long long const a, long long const b) throw ( OverflowExcepti
 	return a - b;
 }
 
-long long RPN::mult(long long const a, long long const b) throw ( OverflowException ) {
+long long RPN::mult(long long const a, long long const b)
+	throw ( OverflowException ) {
 
 	long res = static_cast<long>(a * b);
-	if ( res % a != 0 || res % b != 0 )
+	if ( ( a != 0 && res % a != 0 ) || (b != 0 && res % b != 0 ) )
 		throw ( OverflowException() );
 	return a * b ;
 }
 
-long long RPN::div(long long const a, long long const b) throw ( DivideByZeroException ) {
+long long RPN::div(long long const a, long long const b)
+	throw ( DivideByZeroException ) {
 	if ( b == 0 )
 		throw ( DivideByZeroException() );
 	return a / b ;
@@ -142,6 +149,13 @@ void RPN::do_op( char op )
 	_stack.push(static_cast<long>(res));
 }
 
+bool	RPN::isLongOverflow( std::string const & str){
+	if (std::strcmp(str.c_str(), S_LONG_MAX) == 0
+		|| std::strcmp(str.c_str(), S_LONG_MIN) == 0) {
+		return false;
+    }
+	return true;
+}
 
 void	RPN::calcResult( std::string *split_expr, size_t num){
 
@@ -150,17 +164,19 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 	long long tmp;
 	int op;
 	for ( size_t i = 0; i < num; i++ ){
-		if ( isdigit( split_expr[i][0] ) && num_flag != 2){
+		if ( isdigit( split_expr[i][0] ) 
+			|| ( ( split_expr[i][0] == '+' || split_expr[i][0] == '-' ) 
+				&& isdigit( split_expr[i][1] ) ) ){
 			num_flag++;
-			op_flag = 0;
+			op_flag--;
+			if ( !isLongOverflow( split_expr[i] ) )
+				throw ( OverflowException() );
 			tmp = atol( split_expr[i].c_str() );
-				if (tmp > std::numeric_limits<long>::max()
-					|| tmp < std::numeric_limits<long>::min())
-					throw ( OverflowException() );
 			_stack.push( tmp );
 		}
-		else if ( ( op = isoperation( split_expr[i] ) ) && num_flag == 2 && op_flag == 0){
-			num_flag = 1;
+		else if ( ( op = isoperation( split_expr[i] ) ) && num_flag >= 2 
+			&& op_flag <= ( num_flag - 2 ) ){
+			num_flag--;
 			op_flag++;
 			do_op( split_expr[i][0] );
 		}
@@ -171,6 +187,8 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 	}
 	if (op_flag == 0){
 		std::cerr << "Error: missing operator" << std::endl;
+		ClearAllocs( split_expr );
+		exit( 6 );
 	}
 }
 
@@ -192,8 +210,11 @@ bool RPN::CheckArgument( std::string const expr ){
 	if ( isoperation( expr ) ){
 		return true;
 	}
+	int sign_flag = 0;
 	for ( size_t i = 0; i < expr.size(); i++) {
-		if ( !isdigit( expr[i] ) ){
+		if (expr[i] == '+' || expr[i] ==  '-')
+			sign_flag++;
+		if ( !isdigit( expr[i] ) && expr[i] != '+' && expr[i] !=  '-' && sign_flag > 1){
 			std::cerr << "Error: " << expr << " requires space between numbers and operators" << std::endl;
 			return false;
 		}
@@ -217,7 +238,7 @@ void RPN::DoTheThing( std::string expr ){
 	std::string* split_expr = split(expr, num);
 	if ( !split_expr || split_expr[0].empty()){
 		std::cerr << "Error: wrong format for reverse Polish notation" << std::endl;
-		exit(3) ;// return;
+		exit( 4 ) ;// return;
 	}
 	try{
 		calcResult(split_expr, num);
@@ -225,7 +246,7 @@ void RPN::DoTheThing( std::string expr ){
 	catch (std::exception & e) {
 		std::cerr << e.what() << std::endl;
 		ClearAllocs( split_expr );
-		exit( 3 );
+		exit( 7 );
 	}
 	if (!_stack.empty())
 		std::cout << _stack.top() << std::endl;

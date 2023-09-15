@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/14 20:02:05 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 09:20:31 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
 
 #include <stack>
 
@@ -25,7 +24,8 @@ int main(int ac, char **argv){
 		return 1;
 	}
 	RPN::DoTheThing(argv[1]);
-	std::string str;
+	
+	// std::string str;
 
 	// str = " 12 30 +";
 	// std::cout << "Test 1: " << str << std::endl;
