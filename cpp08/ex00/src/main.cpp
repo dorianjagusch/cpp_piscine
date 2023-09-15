@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:03:13 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/05 14:44:01 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:34:12 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 #include <list>
 #include <queue>
 #include <map>
+
+class NotFoundException : public std::exception
+{
+	public:
+		char const* what( void ) const throw(){
+			return "Value not found in container";
+		}
+};
 
 int main(void)
 {

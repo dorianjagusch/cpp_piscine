@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:17:37 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:29:56 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ private:
 
 	class OverflowException : public std::exception
 	{
-		virtual const char* what( void ) const throw(){
-			return "Integer overflow detected";
-		}
+		virtual const char* what( void ) const throw();
 	};
 
 	enum {

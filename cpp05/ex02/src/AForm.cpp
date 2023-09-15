@@ -12,6 +12,18 @@
 
 #include "AForm.hpp"
 
+const char* AForm::GradeTooHighException::what() const throw(){
+	return "Entered Grade is too high. The allowed range is [1,150]";
+}
+
+const char* AForm::GradeTooLowException::what() const throw(){
+	return "Entered Grade is too low. The allowed range is [1,150]";
+}
+
+const char* AForm::SignedFormException::what() const throw(){
+			return "Form is already signed";
+}
+
 AForm::AForm() : _name( "" ), _signed(false),  _sign_grade( 151 ), _exec_grade( 151 )
 {}
 

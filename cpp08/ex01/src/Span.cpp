@@ -6,30 +6,33 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:25:38 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/08 13:54:04 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:36:31 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
+char const * Span::NumberOfElementsException::what( void ) const throw() {
+	return ( "Too few elements in span" );
+}
+
+char const * Span::SpanFullException::what( void ) const throw() {
+	return ( "Span is already at capacity" );
+}
+
 Span::Span() : _capacity( 0 )
 {}
 
 Span::Span( unsigned int N ) : _capacity( N )
-{
-}
-
+{}
 
 Span::Span( Span const & src )
 {
 	*this = src;
 }
 
-
 Span::~Span()
-{
-}
-
+{}
 
 Span &	Span::operator=( Span const & rhs )
 {

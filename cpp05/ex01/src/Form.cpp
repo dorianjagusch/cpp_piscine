@@ -6,11 +6,21 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:20:11 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:23:53 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+
+
+const char* Form::GradeTooHighException::what() const throw(){
+	return "Entered Grade is too high. The allowed range is [1,150]";
+}
+
+const char* Form::GradeTooLowException::what() const throw(){
+	return "Entered Grade is too low. The allowed range is [1,150]";
+}
+
 
 Form::Form() : _name( "" ), _signed(false),  _sign_grade( 151 ), _exec_grade( 151 )
 {}

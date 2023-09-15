@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 12:40:54 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:24:20 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ public:
 
 	class GradeTooHighException : public std::exception{
 	public:
-		virtual const char* what() const throw(){
-			return "Entered Grade is too high. The allowed range is [1,150]";
-		}
+		virtual const char* what() const throw();
 	};
 	class GradeTooLowException : public std::exception{
 	public:
-		virtual const char* what() const throw(){
-			return "Entered Grade is too low. The allowed range is [1,150]";
-		}
+		virtual const char* what() const throw();
 	};
 
 	Form( std::string, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException);

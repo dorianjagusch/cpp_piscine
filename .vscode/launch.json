@@ -34,7 +34,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/cpp09/ex01/RPN",
 			"MIMode": "lldb",
-			"args": ["1 5 +"],
+			"args": ["5454545 6345324245 / 3453234345345 *"],
 			"stopAtEntry": true,
 			"cwd": "${fileDirname}",
 			"environment": [],

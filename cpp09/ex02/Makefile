@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/08 17:32:56 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/15 19:05:55 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,21 +17,22 @@ COLOUR_END=\033[0m
 
 CC = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-XFLAGS = -g -Wconversion -Wshadow -fsanitize=address -static-libasan
+XFLAGS = -g -Wconversion -Wshadow -fsanitize=address -static-libsan
 
 RM = /bin/rm
 
-FILES := BitcoinExchange
+FILES := PmergeMe initPmergeMe sortPmergeMe timePmergeMe
+H_FILES := PmergeMe
 
 S = src
 O = obj
 
 SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES) main))
-INC = $(addprefix $S/,$(addsuffix .hpp,$(FILES)))
+INC = $(addprefix $S/,$(addsuffix .hpp,$(H_FILES)))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))
 
-NAME = btc
+NAME = PmergeMe
 
 all: $(NAME)
 

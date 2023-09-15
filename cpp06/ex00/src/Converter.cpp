@@ -6,12 +6,15 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 19:11:53 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:30:27 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Converter.hpp"
 
+const char* Converter::OverflowException::what( void ) const throw(){
+	return "Integer overflow detected";
+}
 
 Converter::Converter()
 {}

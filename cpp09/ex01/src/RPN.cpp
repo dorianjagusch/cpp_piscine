@@ -6,16 +6,20 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 09:47:08 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:42:53 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-#define S_LONG_MIN "-9223372036854775808"
-#define S_LONG_MAX "9223372036854775807"
-
 std::stack<long> RPN::_stack;
+
+char const * RPN::OverflowException::what( void ) const throw(){
+	return ("Exception: Result overflowed long type");
+}
+char const * RPN::DivideByZeroException::what( void ) const throw(){
+	return ("Exception: Division by zero");
+}
 
 RPN::RPN()
 {}
@@ -75,88 +79,6 @@ std::string* RPN::split( const std::string& str, size_t num ) {
 	return (tokens);
 }
 
-bool RPN::isoperation( char const c ){
-
-	if (c == '+' || c == '-'
-		|| c == '*' || c == '/')
-		return true;
-	return false;
-}
-
-bool RPN::isoperation( std::string const str ){
-
-	if (str == "+" || str == "-"
-		|| str == "*" || str == "/")
-		return true;
-	return false;
-}
-
-long long RPN::add(long long const a, long long const b)
-	throw ( OverflowException ){
-
-	if ( a + b > std::numeric_limits<long>::max()
-		|| a+ b < std::numeric_limits<long>::min())
-		throw ( OverflowException() );
-	return a + b;
-}
-
-long long RPN::sub(long long const a, long long const b)
-	throw ( OverflowException ) {
-
-	if ( a - b < std::numeric_limits<long>::min()
-		||  a - b > std::numeric_limits<long>::max() )
-		throw ( OverflowException() );
-	return a - b;
-}
-
-long long RPN::mult(long long const a, long long const b)
-	throw ( OverflowException ) {
-
-	long res = static_cast<long>(a * b);
-	if ( ( a != 0 && res % a != 0 ) || (b != 0 && res % b != 0 ) )
-		throw ( OverflowException() );
-	return a * b ;
-}
-
-long long RPN::div(long long const a, long long const b)
-	throw ( DivideByZeroException ) {
-	if ( b == 0 )
-		throw ( DivideByZeroException() );
-	return a / b ;
-}
-
-void RPN::do_op( char op )
-{
-	long long top, bottom, res;
-	top = _stack.top();
-	_stack.pop();
-	bottom = _stack.top();
-	_stack.pop();
-	switch (op){
-		case '+':
-			res = add( top , bottom );
-			break;
-		case '-':
-			res = sub( bottom , top );
-			break;
-		case '*':
-			res = mult( top , bottom );
-			break;
-		case '/':
-			res = div( bottom , top );
-			break;
-	}
-	_stack.push(static_cast<long>(res));
-}
-
-bool	RPN::isLongOverflow( std::string const & str){
-	if (std::strcmp(str.c_str(), S_LONG_MAX) == 0
-		|| std::strcmp(str.c_str(), S_LONG_MIN) == 0) {
-		return false;
-    }
-	return true;
-}
-
 void	RPN::calcResult( std::string *split_expr, size_t num){
 
 	int	op_flag = 2;
@@ -193,34 +115,6 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 }
 
 
-void RPN::CheckCharacters( std::string & expr ){
-		for (size_t i = 0; i < expr.size(); i++)
-	{
-		if ( !isspace( expr[i] )
-			&& !isdigit( expr[i] )
-			&& !isoperation( expr[i] ) ){
-			std::cerr << "Error: invalid character: " << expr[i] << std::endl;
-			exit( 2 ); // return ;
-		}
-	}
-}
-
-bool RPN::CheckArgument( std::string const expr ){
-
-	if ( isoperation( expr ) ){
-		return true;
-	}
-	int sign_flag = 0;
-	for ( size_t i = 0; i < expr.size(); i++) {
-		if (expr[i] == '+' || expr[i] ==  '-')
-			sign_flag++;
-		if ( !isdigit( expr[i] ) && expr[i] != '+' && expr[i] !=  '-' && sign_flag > 1){
-			std::cerr << "Error: " << expr << " requires space between numbers and operators" << std::endl;
-			return false;
-		}
-	}
-	return true;
-}
 
 void RPN::ClearAllocs( std::string* split_expr ){
 

@@ -6,20 +6,26 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/08 18:09:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:05:15 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PMergeMe.hpp"
+#include "PmergeMe.hpp"
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <list>
+#include <algorithm>
 
-
-int main(int ac, char **argv)
+int main(int ac, char **av)
 {
-	vector<int> container1;
-	list<int>	container2
-
+	if (ac == 1){
+		std::cerr << "Provide a sequence of integers separated by spaces please" << std::endl;
+		return 1;
+	}
+	PmergeMe toSort( ac, av );
+	{
+		toSort.sort();
+	}
 	return 0;
 }

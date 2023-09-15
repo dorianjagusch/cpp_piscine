@@ -6,15 +6,22 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 11:00:20 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:26:46 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-{
+const char* Bureaucrat::GradeTooHighException::what() const throw(){
+	return "Entered Grade is too high. The allowed range is [1,150]";
 }
+
+const char* Bureaucrat::GradeTooLowException::what() const throw(){
+	return "Entered Grade is too low. The allowed range is [1,150]";
+}
+
+Bureaucrat::Bureaucrat()
+{}
 
 Bureaucrat::Bureaucrat( std::string name, int grade )  throw(GradeTooHighException, GradeTooLowException) : _name(name), _grade(grade)
 {

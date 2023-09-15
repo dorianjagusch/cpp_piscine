@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:05:15 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/05 14:39:55 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:34:43 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@
 #include <algorithm>
 #include <typeinfo>
 
-class NotFoundException : public std::exception
-{
-	public:
-		char const* what( void ) const throw(){
-			return "Value not found in container";
-		}
-};
+class NotFoundException;
 
 template<typename T>
 typename T::const_iterator 	easyfind(const T& container, int needle)

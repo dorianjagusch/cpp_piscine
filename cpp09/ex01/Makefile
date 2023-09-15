@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/15 09:47:43 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/15 11:24:03 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,14 @@ XFLAGS = -g -Wconversion -Wshadow #-fsanitize=address -static-libsan
 
 RM = /bin/rm
 
-FILES := RPN
+FILES := RPN validation operations
+H_FILES := RPN
 
 S = src
 O = obj
 
 SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES) main))
-INC = $(addprefix $S/,$(addsuffix .hpp,$(FILES)))
+INC = $(addprefix $S/,$(addsuffix .hpp,$(H_FILES)))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))
 

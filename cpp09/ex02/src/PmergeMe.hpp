@@ -6,8 +6,64 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:04:49 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/08 18:08:05 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:18:39 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
+# include <iostream>
+# include <exception>
+# include <vector>
+# include <list>
+# include <iterator>
+# include <algorithm>
+
+class PmergeMe
+{
+public:
+	enum error_codes{
+		good,
+		invalidErr = 1,
+		fillingErr
+	};
+
+	PmergeMe( int ac, char **arg);
+	PmergeMe( PmergeMe const & src );
+	~PmergeMe();
+
+	PmergeMe &	operator=( PmergeMe const & rhs );
+	
+	void					sort( void );
+	std::vector<long long>	getContainer( void ) const;
+	std::ostream &			printContainer( std::ostream & o, PmergeMe const & rhs ) const;
+
+private:
+	PmergeMe();
+	
+
+	static error_codes		validateInput( int ac, char **args);
+	static bool				issign( char const c);
+	static int				makeInt( char const *str );
+	static bool				isIntOverflow( std::string const & str );
+	static void				fillContainers( int ac, char **args );
+	static std::vector<long long>	_container1;
+	static std::list<long long>		_container2;
+
+
+	static void	sortContainer( std::vector<long long>::iterator beg, std::vector<long long>::iterator end,
+				long long max_entry );
+	// static void	sortContainer( std::list<long long> & vec, 
+	// 			std::list<long long>::iterator beg , std::list<long long>::iterator end,
+	// 			long long max_elem );
+	static void	insertion_sort( std::vector<long long>::iterator beg , std::vector<long long>::iterator end );
+	static void	merge(std::vector<long long>::iterator beg, std::vector<long long>::iterator mid,
+			std::vector<long long>::iterator end, long long max_entry );
+
+	static void	setStart( int flag );
+	static void	printDuration( void );
+	static double _startTime;
+};
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:56:17 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/05 14:49:33 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:33:05 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ class Array
 public:
 	class OutOfBoundsException : public std::exception{
 		public:
-			virtual const char *what( void ) const throw() {
-				return "Out of bounds";
-			};
+			virtual const char *what( void ) const throw();
 	};
 
 	Array();
@@ -33,12 +31,17 @@ public:
 	~Array();
 
 	Array			&operator=( Array const &rhs );
-	T				&operator[]( unsigned int n ) const  throw(OutOfBoundsException);
+	T				&operator[]( unsigned int n ) const throw(OutOfBoundsException);
 	unsigned int	size( void ) const;
 private:
 	T				*_array;
 	unsigned int	_size;
 };
+
+template < typename T >
+const char *	Array<T>::OutOfBoundsException::what( void ) const throw() {
+		return "Out of bounds";
+	};
 
 template< typename T>
 Array<T>::Array() : _array( new T[0] ), _size(0)

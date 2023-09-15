@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:48:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/07 12:59:51 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/15 10:35:58 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,11 @@ class Span
 {
 public:
 	class NumberOfElementsException : public std::exception{
-		char const * what( void ) const throw() {
-			return ( "Too few elements in span" );
-		}
+		virtual char const * what( void ) const throw();
 	};
 
 	class SpanFullException : public std::exception{
-		char const * what( void ) const throw() {
-			return ( "Span is already at capacity" );
-		}
+		virtual char const * what( void ) const throw();
 	};
 
 	Span( unsigned int N );
