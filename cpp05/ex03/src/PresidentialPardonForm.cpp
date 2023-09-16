@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:50:37 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:43:41 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ PresidentialPardonForm::PresidentialPardonForm()
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const target) :
-	AForm("presidential pardon", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string const target) throw(std::runtime_error):
+	AForm("pardon form", 25, 5), _target(target)
 {
+	if (_target.empty())
+	std::runtime_error("Target cannot be empty");
 }
 
 PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const &src ) :
-	AForm("presidential form", 25, 5), _target(src._target)
+	AForm("pardon form", 25, 5), _target(src._target)
 {
 }
 
@@ -50,6 +52,6 @@ void	PresidentialPardonForm::execute( const Bureaucrat& executor ) const throw(S
 		throw(AForm::SignedFormException());
 	else if(executor.getGrade() > this->getExecGrade())
 		throw(AForm::GradeTooLowException());
-	std::cout	<< _target << " was pardoned by the 7-times Worst Dressed Sentient"
+	std::cout	<< _target << " was pardoned by the 7-times Worst Dressed Sentient "
 				<< "Being in the Known Universe winner(?) Zaphod Beeblebrox" << std::endl;
 }

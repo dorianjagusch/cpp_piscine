@@ -71,6 +71,7 @@
 		"queue": "cpp",
 		"filesystem": "cpp",
 		"memory_resource": "cpp",
-		"random": "cpp"
+		"random": "cpp",
+		"*.tpp": "cpp"
 	}
 }

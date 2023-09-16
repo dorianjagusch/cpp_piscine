@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 12:40:54 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:24:20 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:35:37 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define FORM_HPP
 
 # include <iostream>
+# include <iomanip>
+# include <exception>
+# include <stdexcept>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -31,7 +34,7 @@ public:
 		virtual const char* what() const throw();
 	};
 
-	Form( std::string, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException);
+	Form( std::string, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException, std::runtime_error);
 	Form( Form const &src ) throw(GradeTooHighException, GradeTooLowException);
 	~Form();
 

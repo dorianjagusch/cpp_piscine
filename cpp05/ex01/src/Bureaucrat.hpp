@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 09:58:27 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:24:38 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:35:07 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <exception>
+# include <stdexcept>
 # include "Form.hpp"
 
 class Form;
@@ -31,7 +32,7 @@ public:
 		virtual const char* what() const throw();
 	};
 
-	Bureaucrat( std::string name, int grade ) throw(GradeTooHighException, GradeTooLowException);
+	Bureaucrat( std::string name, int grade ) throw(GradeTooHighException, GradeTooLowException, std::runtime_error);
 	Bureaucrat( Bureaucrat const &src ) throw(GradeTooHighException, GradeTooLowException);
 	~Bureaucrat();
 

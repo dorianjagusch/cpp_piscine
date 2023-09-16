@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:06:48 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:05:35 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ AForm *Intern::makeForm( std::string const &name, std::string const &target ) co
 	AForm						*form = 0;
 
 	for (int i = 0; i < 3; i++){
-		if ( formNames[i] == name ){
+		if ( !name.empty() && formNames[i] == name ){
 			form = funct[i](target);
 			std::cout << "One of the interns created form " << name << std::endl;
 			return form;

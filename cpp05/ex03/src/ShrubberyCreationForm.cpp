@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:18:32 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:44:15 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) :
-	AForm("shrubbery creation", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) throw(std::runtime_error):
+	AForm("shrubbery form", 145, 137), _target(target)
 {
+	if (_target.empty())
+		std::runtime_error("Target cannot be empty");
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const &src ) :
-	AForm("shrubbery creation", 145, 137), _target(src._target)
+	AForm("shrubbery form", 145, 137), _target(src._target)
 {
 }
 
@@ -45,7 +47,7 @@ ShrubberyCreationForm &	ShrubberyCreationForm::operator=( ShrubberyCreationForm 
 void	ShrubberyCreationForm::execute( const Bureaucrat& executor ) const throw(SignedFormException, GradeTooLowException)
 {
 	std::string fileName = _target + "_shubbery";
-	std::ofstream file(fileName.c_str());
+	std::ofstream file( fileName.c_str(), std::ios_base::app );
 
 	if (!this->getSigned())
 		throw(AForm::SignedFormException());

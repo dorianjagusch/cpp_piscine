@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:20:11 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:23:53 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:35:31 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ const char* Form::GradeTooLowException::what() const throw(){
 Form::Form() : _name( "" ), _signed(false),  _sign_grade( 151 ), _exec_grade( 151 )
 {}
 
-Form::Form ( std::string name, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException):
+Form::Form ( std::string name, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException, std::runtime_error):
 	_name( name ), _signed(false),  _sign_grade( sign_grade ), _exec_grade( exec_grade )
 {
+	if (_name.empty())
+		throw std::runtime_error("Name cannot be empty");
 	if (_sign_grade < 1)
 		throw (GradeTooHighException());
 	else if (_sign_grade > 150)
@@ -63,8 +65,8 @@ Form &	Form::operator=( Form const &rhs )
 
 std::ostream &operator<<( std::ostream &out, Form const &rhs )
 {
-	out	<< "Form " << rhs.getName() << " signed:" << rhs.getSigned()
-		<< " sign grade:" << rhs.getSignGrade() << "exec grade: " << rhs.getExecGrade()
+	out	<< "Form " << rhs.getName() << " signed: " << std::boolalpha << rhs.getSigned()
+		<< " sign grade: " << rhs.getSignGrade() << " exec grade: " << rhs.getExecGrade()
 		<< std::endl;
 	return out;
 }
@@ -100,5 +102,4 @@ bool	Form::beSigned(Bureaucrat &bureaucrat) throw(GradeTooHighException, GradeTo
 		return false;
 	}
 	throw (GradeTooLowException());
-	return false;
 }

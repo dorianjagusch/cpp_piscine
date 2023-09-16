@@ -6,18 +6,26 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:11:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 19:02:45 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:12:17 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+double					PmergeMe::_startTime;
+double					PmergeMe::_duration;
+std::vector<long long>	PmergeMe::_container1;
+std::list<long long>	PmergeMe::_container2;
 
 PmergeMe::PmergeMe()
 {}
 
 PmergeMe::PmergeMe( int ac, char **args )
 {
-	if ( !validateInput( ac, args ) ) { exit( 2 ); };
+	if ( validateInput( ac, args ) ) {
+		std::cerr << "Error: Invalid input: provide positive integers as individual arguments" << std::endl;
+		exit( 2 );
+	};
 	fillContainers( ac, args );
 }
 
@@ -41,12 +49,26 @@ std::vector<long long> PmergeMe::getContainer( void ) const {
 	return (_container1);
 }
 
-std::ostream &	PmergeMe::printContainer( std::ostream & o, PmergeMe const & rhs ) const {
-	const std::vector<long long> container_cpy = rhs.getContainer();
-	std::vector<long long>::const_iterator it;
+void PmergeMe::sort( void ){
 	
-	for ( it =  container_cpy.cbegin(); it != container_cpy.cend(); it++ ){
-		o << *it << std::endl;
+	std::cout << "Before: ";
+	printContainer( _container1 );
+	{
+		setStart();
+		std::vector<long long>::iterator beg = _container1.begin();
+		std::vector<long long>::iterator end = _container1.end();
+		sortContainer( beg, end );
+		setDuration();
+		std::cout << "After: ";
+		printContainer( _container1 );
+		printResult( _container1 , _duration, VECTOR_TYPE );
 	}
-	return o;
+	{
+		setStart();
+		std::list<long long>::iterator beg = _container2.begin();
+		std::list<long long>::iterator end = _container2.end();
+		sortContainer( beg, end );
+		setDuration();
+		printResult( _container2 , _duration, LIST_TYPE );
+	}
 }

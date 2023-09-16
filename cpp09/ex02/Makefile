@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/15 19:05:55 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/16 14:22:53 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,23 @@ XFLAGS = -g -Wconversion -Wshadow -fsanitize=address -static-libsan
 
 RM = /bin/rm
 
-FILES := PmergeMe initPmergeMe sortPmergeMe timePmergeMe
+FILES := main \
+	PmergeMe \
+	initPmergeMe \
+	vecSortPmergeMe \
+	listSortPmergeMe \
+	timePmergeMe
+	
+T_FILES := utils
+	
 H_FILES := PmergeMe
 
 S = src
 O = obj
 
-SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES) main))
+SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES)))
 INC = $(addprefix $S/,$(addsuffix .hpp,$(H_FILES)))
+TEMPL = $(addprefix $S/,$(addsuffix .tpp,$(T_FILES)))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))
 
@@ -39,14 +48,14 @@ all: $(NAME)
 print:
 	echo $(SRC)
 
-$(NAME): $(OBJ) $(INC) $(SRC)
+$(NAME): $(OBJ)
 	@$(CC) $(CXXFLAGS) $(OBJ) -o $@ $(XFLAGS)
 	@echo "$(COLOUR_GREEN) $@ successfully created$(COLOUR_END)"
 
 $O:
 	@mkdir -p $@ $(ODIR)
 
-$O/%.o: $S/%.cpp $(INC) | $O
+$O/%.o: $S/%.cpp $(INC) $(TMPL) | $O
 	@$(CC) $(CXXFLAGS) -c $< $(XFLAGS) -o $@
 
 clean:

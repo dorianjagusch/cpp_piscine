@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:04:49 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 19:18:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:05:13 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <list>
 # include <iterator>
 # include <algorithm>
+
+# define VECTOR_TYPE 0
+# define LIST_TYPE 1
+# define MIN_SIZE 3
 
 class PmergeMe
 {
@@ -37,7 +41,6 @@ public:
 	
 	void					sort( void );
 	std::vector<long long>	getContainer( void ) const;
-	std::ostream &			printContainer( std::ostream & o, PmergeMe const & rhs ) const;
 
 private:
 	PmergeMe();
@@ -51,19 +54,23 @@ private:
 	static std::vector<long long>	_container1;
 	static std::list<long long>		_container2;
 
-
-	static void	sortContainer( std::vector<long long>::iterator beg, std::vector<long long>::iterator end,
-				long long max_entry );
-	// static void	sortContainer( std::list<long long> & vec, 
-	// 			std::list<long long>::iterator beg , std::list<long long>::iterator end,
-	// 			long long max_elem );
+	static void	sortContainer( std::vector<long long>::iterator beg, std::vector<long long>::iterator end );
 	static void	insertion_sort( std::vector<long long>::iterator beg , std::vector<long long>::iterator end );
 	static void	merge(std::vector<long long>::iterator beg, std::vector<long long>::iterator mid,
-			std::vector<long long>::iterator end, long long max_entry );
+				std::vector<long long>::iterator end );
+			
+	static void	sortContainer( std::list<long long>::iterator beg , std::list<long long>::iterator end );
+	static void	insertion_sort( std::list<long long>::iterator beg , std::list<long long>::iterator end );
+	static void	merge(std::list<long long>::iterator beg, std::list<long long>::iterator mid,
+				std::list<long long>::iterator end );
 
-	static void	setStart( int flag );
-	static void	printDuration( void );
+	static void		setStart( void );
+	static double	getDuration( void );
+	static void		setDuration( void );
 	static double _startTime;
+	static double _duration;
 };
+
+# include "utils.tpp"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:09:33 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 19:01:56 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:54:20 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define S_LONG_MAX "9223372036854775807"
 
 bool PmergeMe::issign( char const c){
-	if (c == '+' || c == '-')
+	if (c == '+')
 		return true;
 	return false;
 }

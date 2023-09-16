@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 15:10:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:41:46 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 # include <iostream>
 # include <fstream>
+# include <exception>
+# include <stdexcept>
 # include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm
 {
 public:
-	ShrubberyCreationForm (std::string const _target);
+	ShrubberyCreationForm (std::string const _target) throw(std::runtime_error);
 	ShrubberyCreationForm( ShrubberyCreationForm const &src );
 	~ShrubberyCreationForm();
 
