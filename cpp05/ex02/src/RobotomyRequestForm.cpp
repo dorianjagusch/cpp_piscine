@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:19:14 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:44:06 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ RobotomyRequestForm::RobotomyRequestForm()
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const target) :
+RobotomyRequestForm::RobotomyRequestForm(std::string const target) throw(std::runtime_error) :
 	AForm("robotomy form", 72, 45), _target(target)
 {
+	if (_target.empty())
+		std::runtime_error("Target cannot be empty");
 }
 
 RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &src ) :
@@ -45,14 +47,10 @@ RobotomyRequestForm &	RobotomyRequestForm::operator=( RobotomyRequestForm const 
 
 void	RobotomyRequestForm::execute( const Bureaucrat& executor ) const throw(SignedFormException, GradeTooLowException)
 {
-	static int	i;
-
 	if (!this->getSigned())
 		throw(AForm::SignedFormException());
 	else if(executor.getGrade() > this->getExecGrade())
 		throw(AForm::GradeTooLowException());
-
-	srand(time(NULL) + i++);
 
 	std::cout << "                      _________" << std::endl;
 	std::cout << "                     /~~~~~~~~~\\" << std::endl;
@@ -90,7 +88,7 @@ void	RobotomyRequestForm::execute( const Bureaucrat& executor ) const throw(Sign
 	std::cout << "       |________________________________________________________|" << std::endl << std::endl;
 	// by David Riley from https://ascii.co.uk/art/drill; I added the Brrrrr
 
-	if ( float( rand() ) / float ( RAND_MAX ) <= 0.5)
+	if ( float( rand() ) / float ( RAND_MAX ) <= 0.5 )
 		std::cout	<< "Robomtomy on patient "
 					<< _target
 					<< " was successful. You may take your toaster home.";

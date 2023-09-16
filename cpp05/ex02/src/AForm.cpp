@@ -27,9 +27,11 @@ const char* AForm::SignedFormException::what() const throw(){
 AForm::AForm() : _name( "" ), _signed(false),  _sign_grade( 151 ), _exec_grade( 151 )
 {}
 
-AForm::AForm ( std::string name, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException):
+AForm::AForm ( std::string name, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException, std::runtime_error):
 	_name( name ), _signed(false),  _sign_grade( sign_grade ), _exec_grade( exec_grade )
 {
+	if( _name.empty() )
+		throw(std::runtime_error("Name cannot be empty"));
 	if (_sign_grade < 1)
 		throw (GradeTooHighException());
 	else if (_sign_grade > 150)
@@ -66,8 +68,8 @@ AForm &	AForm::operator=( AForm const &rhs )
 
 std::ostream &operator<<( std::ostream &out, AForm const &rhs )
 {
-	out	<< "AForm " << rhs.getName() << " signed:" << rhs.getSigned()
-		<< " sign grade:" << rhs.getSignGrade() << "exec grade: " << rhs.getExecGrade()
+	out	<< "Form " << rhs.getName() << " signed: " << std::boolalpha << rhs.getSigned()
+		<< " sign grade: " << rhs.getSignGrade() << " exec grade: " << rhs.getExecGrade()
 		<< std::endl;
 	return out;
 }

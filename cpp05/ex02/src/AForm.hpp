@@ -14,6 +14,8 @@
 # define AFORM_HPP
 
 # include <iostream>
+# include <exception>
+# include <stdexcept>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -36,7 +38,7 @@ public:
 	};
 
 	AForm();
-	AForm( std::string, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException);
+	AForm( std::string, int sign_grade, int exec_grade ) throw(GradeTooHighException, GradeTooLowException, std::runtime_error);
 	AForm( AForm const &src ) throw(GradeTooHighException, GradeTooLowException);
 	virtual ~AForm();
 

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 09:58:23 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:59:34 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 int main()
 {
+	srand(time(NULL));
+
 	Bureaucrat maggie("Margaret Evelyn Lenny", 140);
 	Bureaucrat bart("Bartholomew Jojo", 75);
 	Bureaucrat lisa("Lisa Marie", 50);
@@ -64,6 +66,7 @@ int main()
 	}
 	std::cout << std::endl;
 	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+		lisa.executeForm(*(array[i]));
 		lisa.executeForm(*(array[i]));
 	}
 	std::cout << std::endl;

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 11:00:20 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:26:46 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:43:30 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ const char* Bureaucrat::GradeTooLowException::what() const throw(){
 Bureaucrat::Bureaucrat()
 {}
 
-Bureaucrat::Bureaucrat( std::string name, int grade )  throw(GradeTooHighException, GradeTooLowException) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat( std::string name, int grade ) throw(GradeTooHighException, GradeTooLowException, std::runtime_error) : _name(name), _grade(grade)
 {
+	if (_name.empty())
+		throw std::runtime_error("Name cannot be empty");
 	if (grade < 1)
 		throw (GradeTooHighException());
 	else if (grade > 150)
