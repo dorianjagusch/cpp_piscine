@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 19:11:53 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/18 08:24:09 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:15:08 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,10 +198,12 @@ void	Converter::_printInt( void )
 
 void	Converter::_printFloat( std::string const &input )
 {
-	std::cout << "float: " << std::showpoint;
+	std::cout << "float: ";
 	if ( !_pseudo_literal && -std::numeric_limits< float >::max() <= _double
-		&& std::numeric_limits< float >::max() >=_double ){
+		&& std::numeric_limits< float >::max() >= _double ){
 		std::cout << _float;
+		if ( _float - static_cast<int>( _float ) == 0 )
+			std::cout << ".0";
 	}
 	else
 		if ( input == "+inff" || input == "+inf" )
@@ -215,7 +217,7 @@ void	Converter::_printFloat( std::string const &input )
 
 void	Converter::_printDouble( std::string const &input )
 {
-	std::cout << "double: " << std::showpoint;
+	std::cout << "double: ";
 	if ( _pseudo_literal ){
 		if ( input == "+inff" || input == "+inf" )
 			std::cout << "+inff";
@@ -224,8 +226,11 @@ void	Converter::_printDouble( std::string const &input )
 		else
 			std::cout << "nan";
 	}
-	else
+	else{
 		std::cout << _double;
+		if ( _double - static_cast<int>( _double ) == 0 )
+			std::cout << ".0";
+	}
 	std::cout << std::endl;
 }
   
