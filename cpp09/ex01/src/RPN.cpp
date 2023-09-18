@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 12:42:53 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:22:40 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void RPN::DoTheThing( std::string expr ){
 	std::string* split_expr = split(expr, num);
 	if ( !split_expr || split_expr[0].empty()){
 		std::cerr << "Error: wrong format for reverse Polish notation" << std::endl;
-		exit( 4 ) ;// return;
+		exit( 4 ) ;
 	}
 	try{
 		calcResult(split_expr, num);

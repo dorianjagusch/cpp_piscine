@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 10:30:21 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 07:52:08 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 int main( void )
 {
 	try {
-		Data* test = new Data("Jensen", 1, 45, "actor");
-		Data* test2 = Serializer::deserialize( Serializer::serialize( test ) );
+		Data* test = new Data( "Jensen", "actor" );
+		uintptr_t serialised = Serializer::serialize( test );
+		Data* test2 = Serializer::deserialize( serialised );
 		std::cout	<< "Data:\t\t" << test << std::endl
 					<< "deserialised:\t" << test2 << std::endl;
 		delete test;

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 19:11:53 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:30:27 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 08:24:09 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Converter::Converter()
 
 Converter::Converter( Converter const &src )
 {
-	(void) src;
+	static_cast<void>(src);
 }
 
 Converter::~Converter()
@@ -34,7 +34,7 @@ Converter &	Converter::operator=( Converter const &rhs )
 	return *this;
 }
 
-bool		Converter::_isOverflow( std::string const &input )
+bool	Converter::_isOverflow( std::string const &input )
 {
 	long long tmp = strtoll( input.c_str(), NULL, 10 );
 
@@ -46,8 +46,7 @@ bool		Converter::_isOverflow( std::string const &input )
 
 bool	Converter::_isChar( std::string const &input )
 {
-
-	if ( input.length() != 1 || isdigit(input[0]) )
+	if ( input.length() != 1 || std::isdigit(input[0]) )
 		return false ;
 	if ( !std::isprint(input[0]))
 		return false ;
@@ -56,7 +55,7 @@ bool	Converter::_isChar( std::string const &input )
 
 bool	Converter::_isInt( std::string const &input )
 {
-	int		offset = 0;
+	size_t	offset = 0;
 	size_t	i = 0;
 
 	if ( input[0] == '+' || input[0] == '-' )
@@ -72,7 +71,7 @@ bool	Converter::_isInt( std::string const &input )
 bool	Converter::_isFloat( std::string const &input )
 {
 	int		dot = 0;
-	int		offset = 0;
+	size_t	offset = 0;
 	size_t	i = 0;
 
 	if ( _isPseudoLiteral(input, 'f') )
@@ -94,16 +93,16 @@ bool	Converter::_isFloat( std::string const &input )
 bool	Converter::_isDouble( std::string const &input)
 {
 	int		dot = 0;
-	int		offset = 0;
+	size_t	offset = 0;
 	size_t	i = 0;
 
-	if (_isPseudoLiteral(input, 'd'))
+	if ( _isPseudoLiteral( input, 'd' ) )
 		return true ;
-	if (input[0] == '+' || input[0] == '-')
+	if ( input[0] == '+' || input[0] == '-' )
 		offset++;
 	for ( i = offset; i < input.length(); i++ )
 	{
-		if ( !std::isdigit(input[i]) && input[i] != '.' )
+		if ( !std::isdigit( input[i] ) && input[i] != '.' )
 			return false ;
 		else if ( input[i] == '.' )
 			dot++;
@@ -113,8 +112,8 @@ bool	Converter::_isDouble( std::string const &input)
 
 bool	Converter::_isPseudoLiteral(std::string const &input, const int c)
 {
-	if ( (c == 'f' && ( input == "inff" || input == "-inff" || input == "nanf") )
-		|| ( c == 'd' && ( input == "inf" || input == "-inf" || input == "nan") ) ){
+	if ( ( c == 'f' && ( input == "inff" || input == "-inff" || input == "nanf" ) )
+		|| ( c == 'd' && ( input == "inf" || input == "-inf" || input == "nan" ) ) ){
 		_pseudo_literal = true;
 		return true ;
 	}
@@ -126,22 +125,22 @@ bool	Converter::_isImpossible( std::string const &input)
 	try {
 		switch (_type){
 			case CHAR:
-				_char = static_cast< char >(input[0]);
+				_char = static_cast< char >( input[0] );
 				break ;
 			case INT:
-				if (_isOverflow( input ) )
-					throw (OverflowException());
-				_int = atoi( input.c_str() );
+				if ( _isOverflow( input ) )
+					throw ( OverflowException() );
+				_int = std::atoi( input.c_str() );
 				break ;
 			case FLOAT:
-				_float = static_cast< float >(strtof( input.c_str(), NULL ) );
+				_float = static_cast< float >( std::strtof( input.c_str(), NULL ) );
 				break ;
 			case DOUBLE:
-				_double = strtod( input.c_str(), NULL );
+				_double = std::strtod( input.c_str(), NULL );
 		}
 		return false ;
 	}
-	catch (std::exception &e){
+	catch ( std::exception & e ){
 		return true ;
 	}
 }
@@ -150,38 +149,39 @@ void	Converter::_convertValue( void )
 {
 	switch ( _type ){
 		case CHAR:
-			_int = static_cast< int >(_char);
-			_float = static_cast< float >(_char);
-			_double = static_cast< double >(_char);
+			_int = static_cast< int >( _char );
+			_float = static_cast< float >( _char );
+			_double = static_cast< double >( _char );
 			break ;
 		case INT:
-			_char = static_cast< char >(_int);
-			_float = static_cast< float >(_int);
-			_double = static_cast< double >(_int);
+			_char = static_cast< char >( _int );
+			_float = static_cast< float >( _int );
+			_double = static_cast< double >( _int );
 			break ;
 		case FLOAT:
-			_char = static_cast< char >(_float);
-			_int = static_cast< int >(_float);
-			_double = static_cast< double >(_float);
+			_char = static_cast< char >( _float );
+			_int = static_cast< int >( _float );
+			_double = static_cast< double >( _float );
 			break ;
 		case DOUBLE:
-			_char = static_cast< char >(_double);
-			_int = static_cast< int >(_double);
-			_float = static_cast< float >(_double);
+			_char = static_cast< char >( _double );
+			_int = static_cast< int >( _double );
+			_float = static_cast< float >( _double );
 	}
 }
 
 void	Converter::_printChar( void )
 {
 	std::cout << "char: ";
-	if ( _int > 0 && _int < 128 ){
-		if ( isprint(_int) )
-			std::cout << _char;
-		else
-			std::cout << "non displayable";
-	}
-	else
+	if ( _int < 0 || _int > 127 ){
 		std::cout << "impossible";
+		std::cout << std::endl;
+		return ;
+	}
+	if ( std::isprint(_int) )
+		std::cout << _char;
+	else
+		std::cout << "non displayable";
 	std::cout << std::endl;
 }
 
@@ -198,7 +198,7 @@ void	Converter::_printInt( void )
 
 void	Converter::_printFloat( std::string const &input )
 {
-	std::cout << "float: ";
+	std::cout << "float: " << std::showpoint;
 	if ( !_pseudo_literal && -std::numeric_limits< float >::max() <= _double
 		&& std::numeric_limits< float >::max() >=_double ){
 		std::cout << _float;
@@ -215,7 +215,7 @@ void	Converter::_printFloat( std::string const &input )
 
 void	Converter::_printDouble( std::string const &input )
 {
-	std::cout << "double: ";
+	std::cout << "double: " << std::showpoint;
 	if ( _pseudo_literal ){
 		if ( input == "+inff" || input == "+inf" )
 			std::cout << "+inff";
@@ -228,10 +228,10 @@ void	Converter::_printDouble( std::string const &input )
 		std::cout << _double;
 	std::cout << std::endl;
 }
-
+  
 void	Converter::_printConversion( std::string const &input )
 {
-	if (!_possible || _pseudo_literal){
+	if ( !_possible || _pseudo_literal ){
 		std::cout << "char: impossible" << std::endl
 		<< "integer: impossible" << std::endl
 		<< "float: nanf" << std::endl
@@ -252,7 +252,7 @@ void	Converter::convert( std::string const &input )
 		_printConversion( input );
 		return ;
 	}
-	static bool	(*funct[4])( std::string const &) = {
+	static bool (*funct[4])( std::string const & ) = {
 		_isChar,
 		_isInt,
 		_isFloat,
@@ -260,10 +260,10 @@ void	Converter::convert( std::string const &input )
 	};
 
 	for ( _type = 0 ; _type < 4; _type++ ){
-		if (funct[_type](input))
+		if ( funct[_type]( input ) )
 			break ;
 	}
-	if ( _type == 4 || _isImpossible( input ))
+	if ( _type == 4 || _isImpossible( input ) )
 		_possible = false ;
 	_convertValue();
 	_printConversion( input );

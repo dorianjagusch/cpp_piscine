@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 15:10:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 15:41:46 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:08:51 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ public:
 private:
 	ShrubberyCreationForm ();
 	const std::string	_target;
-
 };
 
 #endif

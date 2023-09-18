@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:56:17 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:33:05 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 09:28:29 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ private:
 
 template < typename T >
 const char *	Array<T>::OutOfBoundsException::what( void ) const throw() {
-		return "Out of bounds";
+		return "Out of bounds exception";
 	};
 
 template< typename T>

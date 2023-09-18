@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:11:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 08:29:08 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:17:49 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,10 @@ class RPN
 {
 public:
 	class OverflowException : public std::exception{
-		char const * what( void ) const throw(){
-			return ("Exception: Result overflowed long type");
-		}
+		char const * what( void ) const throw();
 	};
 	class DivideByZeroException : public std::exception{
-		char const * what( void ) const throw(){
-			return ("Exception: Division by zero");
-		}
+		char const * what( void ) const throw();
 	};
 	RPN ();
 	RPN( RPN const & src );

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:19:18 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 13:04:00 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:32:50 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void PmergeMe::merge(std::vector<long long>::iterator beg, std::vector<long long>::iterator mid,
 	std::vector<long long>::iterator end )
 {
-	std::vector<long long> temp(static_cast<unsigned long>( end - beg ) ); // Temporary vector to hold merged values
+	std::vector<long long> temp(static_cast<unsigned long>( end - beg ) );
 	std::vector<long long>::iterator temp_it = temp.begin();
 
 	std::vector<long long>::iterator beg1 = beg;
@@ -32,21 +32,18 @@ void PmergeMe::merge(std::vector<long long>::iterator beg, std::vector<long long
 		temp_it++;
 	}
 
-	// Copy any remaining elements from the left subarray (if any)
 	while (beg1 < mid) {
 		*temp_it = *beg1;
 		beg1++;
 		temp_it++;
 	}
 
-	// Copy any remaining elements from the right subarray (if any)
 	while (beg2 < end) {
 		*temp_it = *beg2;
 		beg2++;
 		temp_it++;
 	}
-
-	// Copy merged elements back to the original array
+	
 	std::copy(temp.begin(), temp.end(), beg);
 }
 

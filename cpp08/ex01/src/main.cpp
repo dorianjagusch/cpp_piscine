@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/08 13:52:45 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:52:52 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void)
 		std::cout << "Longest span: " << sp.longestSpan() << std::endl << std::endl;
 	}
 	{
-		std::cout << "============== Large span (100k) =============" << std::endl << std::endl;
+		std::cout << "============== Large span (10k) =============" << std::endl << std::endl;
 		std::srand( static_cast<unsigned int>( std::time( NULL ) ) );
 		Span sp = Span( 10000 );
 
@@ -60,6 +60,7 @@ int main(void)
 			}
 		}
 		std::cout << "Arrays are the same. Success!" << std::endl;
+		std::cout << "Address\nSpann 1: " << &sp << "\tSpann 2: " << &sp2 << std::endl;
 		std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
 		std::cout << "Longest span: " << sp2.longestSpan() << std::endl << std::endl;
 	}

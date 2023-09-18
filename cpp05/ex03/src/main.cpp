@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 09:58:23 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/12 11:39:04 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:17:28 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ int main()
 	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
 		homer.executeForm(*(array[i]));
 	}
-	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *) && array[i]; i++){
-		delete array[i];
+	for (size_t i = 0; i < sizeof(array) / sizeof(AForm *); i++){
+		if (array[i])
+			delete array[i];
 	}
 
 	millhouse.makeForm("eating request", "Apple pie");

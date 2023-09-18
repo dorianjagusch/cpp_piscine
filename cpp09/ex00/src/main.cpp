@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 16:16:27 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:32:56 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,15 @@ int main(int ac, char **argv){
 	BitcoinExchange::checkFileStream(inFile);
 	BitcoinExchange::initData();
 	std::string line;
+	bool first_line_flag = true;
 	while ( !inFile.eof() ){
 		getline( inFile, line );
-		if ( !line.empty() )
+		if ( line.empty() ) 
+			continue ;
+		if ( !( line.find( "date" ) != std::string::npos && first_line_flag ) ) {
 			BitcoinExchange::getValue( line );
+			first_line_flag = false;
+		}
 	}
 	inFile.close();
 	return 0;

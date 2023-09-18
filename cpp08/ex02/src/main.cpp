@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/13 08:49:47 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:05:57 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int main()
 			++it;
 		}
 		std::list<int> s(test_list);
-		}
+	}
 
 	return 0;
 }

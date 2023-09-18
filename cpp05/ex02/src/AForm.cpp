@@ -34,11 +34,11 @@ AForm::AForm ( std::string name, int sign_grade, int exec_grade ) throw(GradeToo
 		throw(std::runtime_error("Name cannot be empty"));
 	if (_sign_grade < 1)
 		throw (GradeTooHighException());
-	else if (_sign_grade > 150)
+	if (_sign_grade > 150)
 		throw (GradeTooLowException());
 	if (_exec_grade < 1)
 		throw (GradeTooHighException());
-	else if (_exec_grade > 150)
+	if (_exec_grade > 150)
 		throw (GradeTooLowException());
 }
 
@@ -47,11 +47,11 @@ AForm::AForm( AForm const &src ) throw(GradeTooHighException, GradeTooLowExcepti
 {
 	if (_sign_grade < 1)
 		throw (GradeTooHighException());
-	else if (_sign_grade > 150)
+	if (_sign_grade > 150)
 		throw (GradeTooLowException());
 	if (_exec_grade < 1)
 		throw (GradeTooHighException());
-	else if (_exec_grade > 150)
+	if (_exec_grade > 150)
 		throw (GradeTooLowException());
 }
 

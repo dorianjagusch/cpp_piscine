@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:08:46 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 07:45:30 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ Serializer::~Serializer()
 Serializer &	Serializer::operator=( Serializer const &rhs )
 {
 	if( this != &rhs )
-		static_cast<void>( rhs );
+		static_cast< void >( rhs );
 	return *this ;
 }
 
-uintptr_t Serializer::serialize(Data* ptr)
+uintptr_t Serializer::serialize (Data* ptr )
 {
-	return reinterpret_cast<uintptr_t>( ptr );
+	return reinterpret_cast< uintptr_t >( ptr );
 }
 
 
-Data* Serializer::deserialize(uintptr_t raw)
+Data* Serializer::deserialize( uintptr_t raw )
 {
 	return reinterpret_cast< Data* >( raw );
 }

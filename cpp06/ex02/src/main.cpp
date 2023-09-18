@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:45:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/07 13:14:46 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 08:33:56 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ class D : public Base
 
 Base * generate( void )
 {
-	std::srand( static_cast<unsigned int>( std::time( NULL ) ) );
 	int random = std::rand() % 3;
 	try {
 		if (random == 0)
@@ -90,6 +89,7 @@ void identify( Base& p )
 int main(void)
 {
 	Base*	array[20];
+	std::srand( static_cast<unsigned int>( std::time( NULL ) ) );
 
 	for (int i = 0; i < 18; i++){
 		array[i] = generate();
@@ -98,7 +98,8 @@ int main(void)
 	array[19] = NULL;
 	for (int i = 0; i < 20; i++){
 		identify( array[i] );
-		identify( *array[i] );
+		if ( array[i] )
+			identify( *array[i] );
 	}
 	for (int i = 0; i < 18; i++){
 		if (array[i])

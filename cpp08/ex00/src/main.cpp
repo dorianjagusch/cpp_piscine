@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:03:13 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:34:12 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:46:36 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@
 #include <list>
 #include <queue>
 #include <map>
-
-class NotFoundException : public std::exception
-{
-	public:
-		char const* what( void ) const throw(){
-			return "Value not found in container";
-		}
-};
 
 int main(void)
 {
@@ -39,7 +31,7 @@ int main(void)
 	} catch ( std::exception & e ) {
 		std::cout << "vector(42): " << e.what() << std::endl;
 	}
-		try {
+	try {
 		std::vector<int> vector;
 		for (int i = 0; i < 50; i+=2){
 			vector.push_back(i);
@@ -47,7 +39,7 @@ int main(void)
 		std::vector<int>::const_iterator result = easyfind(vector, 43);
 		std::cout << *result << " found" << std::endl;
 	} catch ( std::exception & e ) {
-		std::cout << "vector(42): " << e.what() << std::endl;
+		std::cout << "vector(43): " << e.what() << std::endl;
 	}
 	try {
 		std::list<int> list;
@@ -55,6 +47,16 @@ int main(void)
 			list.push_back(i);
 		}
 		std::list<int>::const_iterator result = easyfind(list, 42);
+		std::cout << *result << " found" << std::endl;
+	} catch ( std::exception & e ) {
+		std::cout << "list(42): " << e.what() << std::endl;
+	}
+	try {
+		std::list<const int> list;
+		for (int i = 0; i < 50; i+=2){
+			list.push_back(i);
+		}
+		std::list<const int>::const_iterator result = easyfind(list, 42);
 		std::cout << *result << " found" << std::endl;
 	} catch ( std::exception & e ) {
 		std::cout << "list(42): " << e.what() << std::endl;
@@ -77,7 +79,7 @@ int main(void)
 		std::vector<char>::const_iterator result = easyfind(vector, 42);
 		std::cout << *result << " found" << std::endl;
 	} catch ( std::exception & e ) {
-		std::cout << "vector<char>(43): " << e.what() << std::endl;
+		std::cout << "vector<char>(42): " << e.what() << std::endl;
 	}
 	try {
 		std::vector<long> vector;

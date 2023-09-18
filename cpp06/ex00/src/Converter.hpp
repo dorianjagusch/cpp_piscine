@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:17:37 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:29:56 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 08:02:44 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CONVERTER_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <exception>
-# include <stdexcept>
 # include <limits>
 # include <cstdlib>
 # include <cfloat>

@@ -6,9 +6,12 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:59:53 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:44:48 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 09:05:02 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 template< typename T >
 void	swap( T &a, T &b )
@@ -32,4 +35,4 @@ const T &	max( T const &a, const T &b )
 	return a > b ? a : b;
 }
 
-
+# endif

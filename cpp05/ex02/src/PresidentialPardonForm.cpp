@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:50:37 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 15:43:41 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:08:26 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	PresidentialPardonForm::execute( const Bureaucrat& executor ) const throw(S
 
 	if (!this->getSigned())
 		throw(AForm::SignedFormException());
-	else if(executor.getGrade() > this->getExecGrade())
+	if (executor.getGrade() > this->getExecGrade())
 		throw(AForm::GradeTooLowException());
 	std::cout	<< _target << " was pardoned by the 7-times Worst Dressed Sentient "
 				<< "Being in the Known Universe winner(?) Zaphod Beeblebrox" << std::endl;

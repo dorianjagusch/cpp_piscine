@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 16:18:32 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 15:44:15 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:08:46 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ void	ShrubberyCreationForm::execute( const Bureaucrat& executor ) const throw(Si
 
 	if (!this->getSigned())
 		throw(AForm::SignedFormException());
-	else if(executor.getGrade() > this->getExecGrade())
+	if(executor.getGrade() > this->getExecGrade())
 		throw(AForm::GradeTooLowException());
-
 
 	if (!file.is_open() || !file.good())
 		return;

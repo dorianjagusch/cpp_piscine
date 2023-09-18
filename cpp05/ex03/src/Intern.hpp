@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 17:57:40 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/28 18:31:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:11:45 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ public:
 	~Intern();
 
 	Intern &	operator=( Intern const &rhs );
-
+	AForm *makeForm( std::string  const &name, std::string const &target ) const;
+private:
 	static AForm *makePresidentialForm( std::string const &target );
 	static AForm *makeRobotomyForm( std::string const &target );
 	static AForm *makeShrubberyForm( std::string const &target );
-	AForm *makeForm( std::string  const &name, std::string const &target ) const;
 };
 
 #endif

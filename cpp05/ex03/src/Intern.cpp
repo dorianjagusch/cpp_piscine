@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:06:48 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 15:05:35 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:12:26 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Intern::~Intern()
 Intern &	Intern::operator=( Intern const &rhs )
 {
 	if( this != &rhs )
-		(void)(rhs);
+		static_cast<void>( rhs );
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 11:00:20 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 15:35:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:08:00 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Bureaucrat::Bureaucrat( std::string name, int grade = 150 ) throw(GradeTooHighEx
 		throw ( std::runtime_error("Name cannot be empty") );
 	if (grade < 1)
 		throw (GradeTooHighException());
-	else if (grade > 150)
+	if (grade > 150)
 		throw (GradeTooLowException());
 }
 
@@ -37,7 +37,7 @@ Bureaucrat::Bureaucrat( Bureaucrat const &src ) throw(GradeTooHighException, Gra
 {
 	if (_grade < 1)
 		throw (GradeTooHighException());
-	else if (_grade > 150)
+	if (_grade > 150)
 		throw (GradeTooLowException());
 }
 

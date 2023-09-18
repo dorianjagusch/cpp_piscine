@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:23:05 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 12:47:50 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:22:23 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void RPN::CheckCharacters( std::string & expr ){
 			&& !isdigit( expr[i] )
 			&& !isoperation( expr[i] ) ){
 			std::cerr << "Error: invalid character: " << expr[i] << std::endl;
-			exit( 2 ); // return ;
+			exit( 2 );
 		}
 	}
 }
