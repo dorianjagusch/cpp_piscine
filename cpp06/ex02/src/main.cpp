@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:45:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/18 08:33:56 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:20:34 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int main(void)
 		if ( array[i] )
 			identify( *array[i] );
 	}
-	for (int i = 0; i < 18; i++){
+	for (int i = 0; i < 19; i++){
 		if (array[i])
 			delete array[i];
 	}

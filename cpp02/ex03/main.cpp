@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:01:47 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 23:11:19 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:36:57 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ int main( void ) {
 	}
 	{
 		std::cout << "================ On triangle edge =================" << std::endl;
-		Point a(5, 2);
-		Point b(5, 3);
-		Point c(4, 5);
+		Point a(0, 0);
+		Point b(0, 3);
+		Point c(3, 3);
 		Point array[] = {
 			a,
 			b,
 			c,
-			Point(5, 1.5)
+			Point(1, 2)
 		};
 
 		std::cout << "Triangle: " << std::endl

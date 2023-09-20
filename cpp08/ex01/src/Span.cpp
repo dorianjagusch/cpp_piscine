@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:25:38 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 10:36:31 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:23:06 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	Span::addNumber( std::list<int>::const_iterator start, std::list<int>::cons
 		_values.push_back(*i);
 	}
 }
-
 
 unsigned int	Span::shortestSpan( void ) const {
 	if (_values.size() < 2)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 16:41:02 bpoint.get_y()djagusch          #+#    #+#             */
-/*   Updated: 2023/08/24 17:03:23 bpoint.get_y()djagusch         ###   ########.fr       */
+/*   Created: 2023/08/24 16:41:02 by agusch            #+#    #+#             */
+/*   Updated: 2023/09/19 15:38:01 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	Fixed bcoord_a  = (bc_y * pc_x + cb_x * pc_x) / denominator;
 	Fixed bcoord_b = (ac_x * pc_x - ac_y * pc_x) / denominator;
 
-	return Fixed(1) - bcoord_a - bcoord_b>= 0;
+	return Fixed(1) - bcoord_a - bcoord_b >= 0;
 }
