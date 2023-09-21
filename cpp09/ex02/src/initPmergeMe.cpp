@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:09:33 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 12:54:20 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 07:32:40 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int PmergeMe::makeInt( char const *str ){
 	return ( static_cast<int>( atol(str) ) );
 }
 
-void PmergeMe::fillContainers( int ac, char **args )
+void PmergeMe::fillVector( int ac, char **args )
 {
 	int i = 1;
 	int val;
@@ -58,6 +58,21 @@ void PmergeMe::fillContainers( int ac, char **args )
 		for(; i < ac; i++ ){
 			val = makeInt( args[i] );
 			_container1.push_back( val );
+		}
+	} catch (std::exception & e){
+		std::cerr << e.what() << args[i] << std::endl;
+		exit(2);
+	}
+}
+
+void PmergeMe::fillList( int ac, char **args )
+{
+	int i = 1;
+	int val;
+
+	try{
+		for(; i < ac; i++ ){
+			val = makeInt( args[i] );
 			_container2.push_back( val );
 		}
 	} catch (std::exception & e){

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:04:49 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 13:05:13 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 07:46:24 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,19 @@ public:
 
 	PmergeMe &	operator=( PmergeMe const & rhs );
 	
-	void					sort( void );
+	void					sort( int ac, char **av );
 	std::vector<long long>	getContainer( void ) const;
 
 private:
 	PmergeMe();
 	
 
-	static error_codes		validateInput( int ac, char **args);
-	static bool				issign( char const c);
-	static int				makeInt( char const *str );
-	static bool				isIntOverflow( std::string const & str );
-	static void				fillContainers( int ac, char **args );
+	static error_codes				validateInput( int ac, char **args);
+	static bool						issign( char const c);
+	static int						makeInt( char const *str );
+	static bool						isIntOverflow( std::string const & str );
+	static void						fillVector( int ac, char **args );
+	static void						fillList( int ac, char **args );
 	static std::vector<long long>	_container1;
 	static std::list<long long>		_container2;
 
@@ -65,10 +66,10 @@ private:
 				std::list<long long>::iterator end );
 
 	static void		setStart( void );
-	static double	getDuration( void );
-	static void		setDuration( void );
-	static double _startTime;
-	static double _duration;
+	static void		setDuration( double & duration );
+	static double	_startTime;
+	static double	_duration1;
+	static double	_duration2;
 };
 
 # include "utils.tpp"

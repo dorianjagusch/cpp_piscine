@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/18 14:22:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 07:26:01 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,6 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 		exit( 6 );
 	}
 }
-
-
 
 void RPN::ClearAllocs( std::string* split_expr ){
 

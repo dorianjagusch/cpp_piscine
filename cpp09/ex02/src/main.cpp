@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 19:05:15 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 07:42:24 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int ac, char **av)
 	}
 	PmergeMe toSort( ac, av );
 	{
-		toSort.sort();
+		toSort.sort( ac, av );
 	}
 	return 0;
 }

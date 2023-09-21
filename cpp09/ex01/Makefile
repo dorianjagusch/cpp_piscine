@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/15 11:24:03 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/21 07:26:19 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ COLOUR_END=\033[0m
 
 CC = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-XFLAGS = -g -Wconversion -Wshadow #-fsanitize=address -static-libsan
+XFLAGS = -Wconversion -Wshadow
 
 RM = /bin/rm
 

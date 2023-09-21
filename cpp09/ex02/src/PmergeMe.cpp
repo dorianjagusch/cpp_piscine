@@ -6,14 +6,15 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:11:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/16 13:12:17 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 07:43:50 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 double					PmergeMe::_startTime;
-double					PmergeMe::_duration;
+double					PmergeMe::_duration1;
+double					PmergeMe::_duration2;
 std::vector<long long>	PmergeMe::_container1;
 std::list<long long>	PmergeMe::_container2;
 
@@ -26,7 +27,6 @@ PmergeMe::PmergeMe( int ac, char **args )
 		std::cerr << "Error: Invalid input: provide positive integers as individual arguments" << std::endl;
 		exit( 2 );
 	};
-	fillContainers( ac, args );
 }
 
 PmergeMe::PmergeMe( PmergeMe const & src )
@@ -49,26 +49,28 @@ std::vector<long long> PmergeMe::getContainer( void ) const {
 	return (_container1);
 }
 
-void PmergeMe::sort( void ){
+void PmergeMe::sort( int ac, char **av ){
 	
-	std::cout << "Before: ";
-	printContainer( _container1 );
 	{
 		setStart();
+		std::cout << "Before: ";
+		fillVector( ac, av );
+		printContainer( _container1 );
 		std::vector<long long>::iterator beg = _container1.begin();
 		std::vector<long long>::iterator end = _container1.end();
 		sortContainer( beg, end );
-		setDuration();
-		std::cout << "After: ";
-		printContainer( _container1 );
-		printResult( _container1 , _duration, VECTOR_TYPE );
+		setDuration( _duration1 );
 	}
 	{
 		setStart();
+		fillList( ac, av );
 		std::list<long long>::iterator beg = _container2.begin();
 		std::list<long long>::iterator end = _container2.end();
 		sortContainer( beg, end );
-		setDuration();
-		printResult( _container2 , _duration, LIST_TYPE );
+		std::cout << "After: ";
+		printContainer( _container2 );
+		setDuration( _duration2 );
 	}
+	printResult( _container1 , _duration1, VECTOR_TYPE );
+	printResult( _container2 , _duration2, LIST_TYPE );
 }
