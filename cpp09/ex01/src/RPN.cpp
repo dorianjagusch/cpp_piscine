@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/21 07:26:01 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:59:50 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 			exit( 5 );
 		}
 	}
-	if (op_flag == 0){
+	if (op_flag <= 0){
 		std::cerr << "Error: missing operator" << std::endl;
 		ClearAllocs( split_expr );
 		exit( 6 );

@@ -6,14 +6,11 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:09:33 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/21 07:32:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:32:39 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-#define S_LONG_MIN "-9223372036854775808"
-#define S_LONG_MAX "9223372036854775807"
 
 bool PmergeMe::issign( char const c){
 	if (c == '+')
@@ -34,14 +31,12 @@ PmergeMe::error_codes PmergeMe::validateInput( int ac, char **args ){
 	return good;
 }
 
-bool	PmergeMe::isIntOverflow( std::string const & str ) {
+void	PmergeMe::isIntOverflow( std::string const & str ) throw ( OverFlowException ){
 
-	long val = atol( str.c_str() ); 
-
-	if ( val > std::numeric_limits<int>::max() ||
-		val < std::numeric_limits<int>::min() )
-		return true;
-	return false;
+	long long val = atol( str.c_str() ); 
+	if ( val >= std::numeric_limits<int>::max() ||
+		val <= std::numeric_limits<int>::min() )
+		throw ( OverFlowException() );
 }
 
 int PmergeMe::makeInt( char const *str ){
@@ -51,8 +46,8 @@ int PmergeMe::makeInt( char const *str ){
 
 void PmergeMe::fillVector( int ac, char **args )
 {
-	int i = 1;
-	int val;
+	int	i = 1;
+	int	val;
 
 	try{
 		for(; i < ac; i++ ){
@@ -60,15 +55,15 @@ void PmergeMe::fillVector( int ac, char **args )
 			_container1.push_back( val );
 		}
 	} catch (std::exception & e){
-		std::cerr << e.what() << args[i] << std::endl;
+		std::cerr << e.what() << " at " << args[i] << std::endl;
 		exit(2);
 	}
 }
 
 void PmergeMe::fillList( int ac, char **args )
 {
-	int i = 1;
-	int val;
+	int	i = 1;
+	int	val;
 
 	try{
 		for(; i < ac; i++ ){

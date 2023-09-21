@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 11:45:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/20 09:20:34 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:29:07 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,12 @@
 #include <exception>
 #include <cstdlib>
 #include <ctime>
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include "D.hpp"
 
-class Base
-{
-public:
-	virtual ~Base(){};
-};
-
-class A : public Base
-{};
-
-class B : public Base
-{};
-
-class C : public Base
-{};
-
-class D : public Base
-{};
 
 Base * generate( void )
 {

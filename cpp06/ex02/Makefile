@@ -6,7 +6,7 @@
 #    By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 15:58:53 by djagusch          #+#    #+#              #
-#    Updated: 2023/09/20 09:17:43 by djagusch         ###   ########.fr        #
+#    Updated: 2023/09/20 09:29:36 by djagusch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 XFLAGS = -Wconversion -Wshadow
 RM = /bin/rm
 
-FILES :=
+FILES := A B C D Base
 S = src
 O = obj
 
-SRC = $(addprefix $S/,$(addsuffix .cpp,$(FILES) main))
+SRC = $(addprefix $S/,$(addsuffix .cpp, main))
 INC = $(addprefix $S/,$(addsuffix .hpp,$(FILES)))
 OBJ = $(patsubst $S/%,$O/%,$(SRC:.cpp=.o))
 ODIR = $(dir $(OBJ))

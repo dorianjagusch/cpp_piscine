@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:31:43 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/18 13:14:17 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:05:43 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,12 @@ void BitcoinExchange::getValue( std::string line ){
 	if ( !cur_substr )
 		return;
 	if (!checkDate(cur_substr[0])) {
+		delete [] cur_substr;
 		std::cerr << "Error: invalid date => " << cur_substr[0] << std::endl;
 		return ;
 	}
 	if ((num_error = checkAmount(cur_substr[1]))) {
+		delete [] cur_substr;
 		printNumError(num_error);
 		return ;
 	} 
