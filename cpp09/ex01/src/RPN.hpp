@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:11:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/18 14:17:49 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:46:59 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ private:
 	static bool			isoperation( char const c );
 	static bool			isoperation( std::string const str );
 	static bool			isLongOverflow( std::string const & str);
+	static bool				isLongOverflow( long long val );
 	static size_t		count_words( std::string str );
 	static void			calcResult( std::string *split_expr, size_t num);
 	static void			do_op( char op );

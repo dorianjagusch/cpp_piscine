@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:23:05 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/28 09:20:40 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:52:28 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 #define S_LONG_MAX "9223372036854775807"
 
 bool	RPN::isLongOverflow( std::string const & str){
+
 	long val = atol( str.c_str() ); 
-	
+
 	if ( val != std::numeric_limits<long>::max() &&
 		val != std::numeric_limits<long>::min() )
-		return true;
+		return false;
 	if ( std::strcmp (str.c_str(), S_LONG_MAX ) == 0
 		|| std::strcmp( str.c_str(), S_LONG_MIN ) == 0 ) {
 		return false;

@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:11:06 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/28 09:31:30 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:49:51 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void PmergeMe::sort( int ac, char **av ){
 		std::vector<long long>::iterator beg = _container1.begin();
 		std::vector<long long>::iterator end = _container1.end();
 		sortContainer( beg, end );
-		is_sort( beg, end );
+		// std::cout << is_sort( beg, end ) << std::endl;
 		setDuration( _duration1 );
 	}
 
@@ -101,7 +101,7 @@ void PmergeMe::sort( int ac, char **av ){
 		std::list<long long>::iterator beg = _container2.begin();
 		std::list<long long>::iterator end = _container2.end();
 		sortContainer( beg, end );
-		is_sort( beg, end );
+		// std::cout << is_sort( beg, end ) << std::endl;
 		std::cout << "After:\t";
 		printContainer( _container2 );
 		setDuration( _duration2 );

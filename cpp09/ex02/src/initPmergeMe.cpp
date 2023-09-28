@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:09:33 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/21 15:32:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:04:14 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,17 @@ void PmergeMe::fillVector( int ac, char **args )
 
 	try{
 		for(; i < ac; i++ ){
+			if (args[i][0] == 0)
+				throw( std::invalid_argument( "None of the inputs can be empty" ) );
 			val = makeInt( args[i] );
 			_container1.push_back( val );
 		}
-	} catch (std::exception & e){
+	}
+	catch ( std::invalid_argument & e ){
+		std::cerr << e.what() << std::endl;
+		exit(2);
+	}
+	catch ( std::exception & e ){
 		std::cerr << e.what() << " at " << args[i] << std::endl;
 		exit(2);
 	}

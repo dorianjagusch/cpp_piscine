@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/28 09:28:19 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:36:23 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 				&& isdigit( split_expr[i][1] ) ) ){
 			num_flag++;
 			op_flag--;
-			if ( !isLongOverflow( split_expr[i] ) )
+			if ( isLongOverflow( split_expr[i] ) )
 				throw ( OverflowException() );
 			tmp = atol( split_expr[i].c_str() );
 			_stack.push( tmp );
@@ -130,7 +130,7 @@ void RPN::DoTheThing( std::string expr ){
 		std::cerr << "Error: wrong format for reverse Polish notation" << std::endl;
 		exit( 4 ) ;
 	}
-	if ( num == 1 ){
+	if ( num == 1 && !isLongOverflow(split_expr[0])){
 		std::cout << split_expr[0] << std::endl;
 		ClearAllocs( split_expr );
 		return ;

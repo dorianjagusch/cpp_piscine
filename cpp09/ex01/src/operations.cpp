@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   opertations.cpp                                    :+:      :+:    :+:   */
+/*   operations.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:21:43 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/15 11:21:58 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:00:06 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,18 @@ bool RPN::isoperation( std::string const str ){
 long long RPN::add(long long const a, long long const b)
 	throw ( OverflowException ){
 
-	if ( a + b > std::numeric_limits<long>::max()
-		|| a+ b < std::numeric_limits<long>::min())
+	if ((b > 0 && a > std::numeric_limits<long long>::max() - b) ||
+		(b < 0 && a < std::numeric_limits<long long>::min() - b)) {
 		throw ( OverflowException() );
+		}
 	return a + b;
 }
 
 long long RPN::sub(long long const a, long long const b)
-	throw ( OverflowException ) {
+	throw ( OverflowException ){
 
-	if ( a - b < std::numeric_limits<long>::min()
-		||  a - b > std::numeric_limits<long>::max() )
+	if ((b > 0 && a < std::numeric_limits<long long>::min() + b) ||
+		(b < 0 && a > std::numeric_limits<long long>::max() + b))
 		throw ( OverflowException() );
 	return a - b;
 }
