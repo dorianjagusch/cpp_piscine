@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 21:21:27 by djagusch          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:16 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:04:06 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(void){
 	{
 		DiamondTrap diddy("Steve");
 
+		diddy.
 		diddy.attack("the great, blue sea");
 		diddy.takeDamage(2);
 		diddy.attack("the dark, green forest");

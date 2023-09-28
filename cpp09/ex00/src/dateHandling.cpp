@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DateHandling.cpp                                   :+:      :+:    :+:   */
+/*   dateHandling.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 07:54:28 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/14 07:57:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:15:26 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int BitcoinExchange::dateToNum(std::string const & str) {
 	date = year * YEAR_SCALE + month * MONTH_SCALE + day;
 	return date;
 }
-std::string BitcoinExchange::numToDate(int date) {
+std::string BitcoinExchange::numToDate( int date ) {
 
 	int day, month, year;
 	std::stringstream stream;
@@ -77,15 +77,15 @@ bool BitcoinExchange::isDateValid( int date ) {
 	month = dateToMonth( date );
 	year = dateToYear( date );
 
-	if (year < 2009 || year > 2022)
+	if ( year < 2009 )
 		return false;
-	if (month < 1 || month > 12)
+	if ( month < 1 || month > 12 )
 		return false;
 	if ( day < 1 
-	|| ( day > 31 && (month == 1 || month == 3 || month == 5 
-		|| month == 7 || month == 8 || month == 10 || month == 12) )
+	|| ( day > 31 && (  month == 1 || month == 3 || month == 5 
+		|| month == 7 || month == 8 || month == 10 || month == 12 ) )
 	|| ( day > 30 && ( month == 4 || month == 6 || month == 9 || month == 11 ) )
-	|| ( day > 28 + static_cast<int>(isLeapYear(year)) && month == 2 ) )
+	|| ( day > 28 + static_cast<int>( isLeapYear( year ) ) && month == 2 ) )
 		return false;
 	return true;
 }

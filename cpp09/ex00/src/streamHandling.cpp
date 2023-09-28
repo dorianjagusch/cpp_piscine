@@ -6,13 +6,13 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 07:56:33 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/14 08:03:02 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:08:53 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-void BitcoinExchange::checkFileStream( std::ifstream & stream){
+void BitcoinExchange::checkFileStream( std::ifstream & stream ){
 	if (!stream.is_open() || !stream.good() || stream.peek() < 0){
 		std::cerr << "Failed to open input file." << std::endl;
 		stream.close();
@@ -27,8 +27,8 @@ std::string* BitcoinExchange::split( const std::string& str ) {
 	std::string			token;
 	size_t				i = 0;
 
-	for( ; i < 4 && std::getline(stream, token, '|'); i++) {
-		tokens[i] = (token);
+	for( ; i < 4 && std::getline( stream, token, '|' ); i++) {
+		tokens[i] = ( token );
 	}
 	if ( i != 2){
 		delete [] tokens;

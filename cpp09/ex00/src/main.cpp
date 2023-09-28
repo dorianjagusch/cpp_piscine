@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:53:57 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/18 13:32:56 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:09:04 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string>
 #include <map>
 
-int main(int ac, char **argv){
+int main( int ac, char **argv ){
 	
 	if (ac != 2){
 		std::cerr << "Error: Provide one input file, please" << std::endl;
@@ -24,7 +24,7 @@ int main(int ac, char **argv){
 	}
 	std::ifstream inFile;
 	inFile.open( argv[1], std::fstream::in );
-	BitcoinExchange::checkFileStream(inFile);
+	BitcoinExchange::checkFileStream( inFile );
 	BitcoinExchange::initData();
 	std::string line;
 	bool first_line_flag = true;

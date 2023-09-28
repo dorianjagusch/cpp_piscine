@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:31:43 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/21 10:05:43 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:09:44 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void BitcoinExchange::initData( void ){
 		}
 		pos = line.find(',');
 		key = line.substr( 0, pos );
-		value = static_cast<float>( atof( line.substr(pos + 1, line.length() - pos).c_str() ) );
-		_dataBase[dateToNum(key)] = value;
+		value = static_cast<float>( atof( line.substr( pos + 1, line.length() - pos).c_str() ) );
+		_dataBase[dateToNum( key )] = value;
 	} while ( !rawData.eof() );
 	rawData.close();
 }
@@ -66,7 +66,7 @@ BitcoinExchange::error_code BitcoinExchange::checkAmount( const std::string& str
 		return nan;
 	for ( size_t i = 1 ; i < str.length(); i++ )
 	{
-		if( str.c_str()[i] == '.' && !period_flag){
+		if( str.c_str()[i] == '.' && !period_flag ){
 			period_flag = 1;
 			i++;
 			continue;
@@ -74,7 +74,7 @@ BitcoinExchange::error_code BitcoinExchange::checkAmount( const std::string& str
 		if ( !isdigit( str.c_str()[i] ) && str.c_str()[1] != '-' )
 			return nan;
 	}
-	val = atof(str.c_str());
+	val = atof( str.c_str() );
 	if ( val < 0 )
 		return small;
 	if ( val > 1000 )
@@ -105,11 +105,11 @@ void BitcoinExchange::printValue( std::string * cur_substr)
 	double	value;
 
 	std::map<int, float>::const_iterator entry;
-	entry = _dataBase.lower_bound(dateToNum(*cur_substr));
-	if (entry != _dataBase.begin()) {
+	entry = _dataBase.lower_bound( dateToNum(*cur_substr) );
+	if ( entry != _dataBase.begin() ) {
 		entry--;
 	}
-	value = atof(cur_substr[1].c_str());
+	value = atof( cur_substr[1].c_str() );
 	amount = value * entry->second;
 	std::cout << *cur_substr << " => " << value << " = " << amount << std::endl;
 }

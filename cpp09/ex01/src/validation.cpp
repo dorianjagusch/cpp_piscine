@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:23:05 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/18 14:22:23 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:20:40 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ bool	RPN::isLongOverflow( std::string const & str){
 	if ( val != std::numeric_limits<long>::max() &&
 		val != std::numeric_limits<long>::min() )
 		return true;
-	if (std::strcmp(str.c_str(), S_LONG_MAX) == 0
-		|| std::strcmp(str.c_str(), S_LONG_MIN) == 0) {
+	if ( std::strcmp (str.c_str(), S_LONG_MAX ) == 0
+		|| std::strcmp( str.c_str(), S_LONG_MIN ) == 0 ) {
 		return false;
 	}
 	return true;
@@ -47,9 +47,9 @@ bool RPN::CheckArgument( std::string const expr ){
 	}
 	int sign_flag = 0;
 	for ( size_t i = 0; i < expr.size(); i++) {
-		if (expr[i] == '+' || expr[i] ==  '-')
+		if ( expr[i] == '+' || expr[i] ==  '-' )
 			sign_flag++;
-		if ( !isdigit( expr[i] ) && expr[i] != '+' && expr[i] !=  '-' && sign_flag > 1){
+		if ( !isdigit( expr[i] ) && expr[i] != '+' && expr[i] !=  '-' && sign_flag > 1 ){
 			std::cerr << "Error: " << expr << " requires space between numbers and operators" << std::endl;
 			return false;
 		}

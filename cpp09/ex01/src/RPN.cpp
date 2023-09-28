@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/21 10:59:50 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:28:19 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ size_t	RPN::count_words( std::string str ){
 
 std::string* RPN::split( const std::string& str, size_t num ) {
 
-	if ( num < 3 ) return NULL;
-
-	std::string* 		tokens = new std::string[num + 1];
+	std::string* 		tokens = new std::string[num];
 	std::istringstream	stream(str);
 	std::string			token;
 	size_t				current = 0;
@@ -131,6 +129,11 @@ void RPN::DoTheThing( std::string expr ){
 	if ( !split_expr || split_expr[0].empty()){
 		std::cerr << "Error: wrong format for reverse Polish notation" << std::endl;
 		exit( 4 ) ;
+	}
+	if ( num == 1 ){
+		std::cout << split_expr[0] << std::endl;
+		ClearAllocs( split_expr );
+		return ;
 	}
 	try{
 		calcResult(split_expr, num);

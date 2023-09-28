@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:56:17 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/21 11:27:17 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/09/25 10:38:37 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ public:
 	~Array();
 
 	Array			&operator=( Array const &rhs );
-	T				&operator[]( unsigned int n ) const throw(OutOfBoundsException);
+	T				&operator[]( unsigned int n ) throw(OutOfBoundsException);
+	T const			&operator[]( unsigned int n ) const throw(OutOfBoundsException);
 	unsigned int	size( void ) const;
 private:
 	T				*_array;
@@ -88,7 +89,15 @@ Array<T> &Array<T>::operator=( Array<T> const &rhs )
 }
 
 template< typename T>
-T &Array<T>::operator[]( unsigned int n ) const throw(OutOfBoundsException)
+T &Array<T>::operator[]( unsigned int n ) throw(OutOfBoundsException)
+{
+	if ( n >= _size )
+		throw( OutOfBoundsException() );
+	return _array[n] ;
+}
+
+template< typename T>
+T const &Array<T>::operator[]( unsigned int n ) const throw(OutOfBoundsException)
 {
 	if ( n >= _size )
 		throw( OutOfBoundsException() );
