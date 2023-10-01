@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:31:43 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/28 09:09:44 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/10/01 21:11:18 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ BitcoinExchange::~BitcoinExchange()
 {}
 
 BitcoinExchange &	BitcoinExchange::operator=( BitcoinExchange const & rhs ){
-	
+
 	if( this != &rhs )
 		_dataBase = rhs._dataBase;
 	return (*this);
@@ -71,7 +71,8 @@ BitcoinExchange::error_code BitcoinExchange::checkAmount( const std::string& str
 			i++;
 			continue;
 		}
-		if ( !isdigit( str.c_str()[i] ) && str.c_str()[1] != '-' )
+		if ( !isdigit( str.c_str()[i] )
+			&& str.c_str()[1] != '+' && str.c_str()[1] != '-' )
 			return nan;
 	}
 	val = atof( str.c_str() );
@@ -84,7 +85,7 @@ BitcoinExchange::error_code BitcoinExchange::checkAmount( const std::string& str
 
 void BitcoinExchange::printNumError(error_code error) {
 
-	switch (error){	
+	switch (error){
 		case 1:
 			std::cerr << "Error: not a positive number." << std::endl;
 			break;
@@ -123,15 +124,15 @@ void BitcoinExchange::getValue( std::string line ){
 	if ( !cur_substr )
 		return;
 	if (!checkDate(cur_substr[0])) {
-		delete [] cur_substr;
 		std::cerr << "Error: invalid date => " << cur_substr[0] << std::endl;
+		delete [] cur_substr;
 		return ;
 	}
 	if ((num_error = checkAmount(cur_substr[1]))) {
 		delete [] cur_substr;
 		printNumError(num_error);
 		return ;
-	} 
+	}
 	printValue(cur_substr);
 	delete [] cur_substr;
 }

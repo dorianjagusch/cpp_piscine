@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:11:44 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/28 11:46:59 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/10/01 20:36:30 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sstream>
 # include <stack>
 # include <cstdlib>
+# include <cstring>
 # include <algorithm>
 # include <exception>
 # include <limits>

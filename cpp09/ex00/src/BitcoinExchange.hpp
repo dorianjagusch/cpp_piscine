@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:31:40 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/14 07:58:51 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/10/01 20:42:37 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sstream>
 # include <iostream>
 # include <cstdlib>
+# include <iterator>
 # include <map>
 
 class BitcoinExchange

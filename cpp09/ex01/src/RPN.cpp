@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 18:00:08 by djagusch          #+#    #+#             */
-/*   Updated: 2023/09/28 11:36:23 by djagusch         ###   ########.fr       */
+/*   Updated: 2023/10/01 20:32:39 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 std::stack<long> RPN::_stack;
 
 char const * RPN::OverflowException::what( void ) const throw(){
-	return ("Exception: Result overflowed long type");
+	return ( "Exception: Result overflowed long type" );
 }
 char const * RPN::DivideByZeroException::what( void ) const throw(){
-	return ("Exception: Division by zero");
+	return ( "Exception: Division by zero" );
 }
 
 RPN::RPN()
@@ -44,7 +44,7 @@ size_t	RPN::count_words( std::string str ){
 	size_t n_words = 0;
 	size_t i = 0;
 
-	while (isspace( str[i] ))
+	while ( isspace( str[i] ) )
 		i++;
 	for ( ; i < str.length(); i++ ){
 		if ( isspace( str[i] ) )
@@ -63,11 +63,11 @@ std::string* RPN::split( const std::string& str, size_t num ) {
 	std::string			token;
 	size_t				current = 0;
 
-	while ( std::getline(stream, token, ' ') ) {
+	while ( std::getline( stream, token, ' ' ) ) {
 		if ( !token.empty() )
 		{
-			if (CheckArgument( token ))
-				tokens[current++] = (token);
+			if ( CheckArgument( token ) )
+				tokens[current++] = token;
 			else{
 				delete [] tokens;
 				exit( 3 );
@@ -77,15 +77,15 @@ std::string* RPN::split( const std::string& str, size_t num ) {
 	return (tokens);
 }
 
-void	RPN::calcResult( std::string *split_expr, size_t num){
+void	RPN::calcResult( std::string *split_expr, size_t num ){
 
 	int	op_flag = 2;
 	int	num_flag = 0;
 	long long tmp;
 	int op;
 	for ( size_t i = 0; i < num; i++ ){
-		if ( isdigit( split_expr[i][0] ) 
-			|| ( ( split_expr[i][0] == '+' || split_expr[i][0] == '-' ) 
+		if ( isdigit( split_expr[i][0] )
+			|| ( ( split_expr[i][0] == '+' || split_expr[i][0] == '-' )
 				&& isdigit( split_expr[i][1] ) ) ){
 			num_flag++;
 			op_flag--;
@@ -94,7 +94,7 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 			tmp = atol( split_expr[i].c_str() );
 			_stack.push( tmp );
 		}
-		else if ( ( op = isoperation( split_expr[i] ) ) && num_flag >= 2 
+		else if ( ( op = isoperation( split_expr[i] ) ) && num_flag >= 2
 			&& op_flag <= ( num_flag - 2 ) ){
 			num_flag--;
 			op_flag++;
@@ -105,7 +105,7 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 			exit( 5 );
 		}
 	}
-	if (op_flag <= 0){
+	if ( op_flag <= 0 ){
 		std::cerr << "Error: missing operator" << std::endl;
 		ClearAllocs( split_expr );
 		exit( 6 );
@@ -114,7 +114,7 @@ void	RPN::calcResult( std::string *split_expr, size_t num){
 
 void RPN::ClearAllocs( std::string* split_expr ){
 
-	while (!_stack.empty())
+	while ( !_stack.empty() )
 		_stack.pop();
 	if ( split_expr )
 		delete [] split_expr;
@@ -124,26 +124,27 @@ void RPN::ClearAllocs( std::string* split_expr ){
 void RPN::DoTheThing( std::string expr ){
 
 	CheckCharacters( expr );
-	size_t num = count_words(expr);
-	std::string* split_expr = split(expr, num);
-	if ( !split_expr || split_expr[0].empty()){
+	size_t num = count_words( expr );
+	std::string* split_expr = split( expr, num );
+	if ( !split_expr || split_expr[0].empty() ){
 		std::cerr << "Error: wrong format for reverse Polish notation" << std::endl;
 		exit( 4 ) ;
 	}
-	if ( num == 1 && !isLongOverflow(split_expr[0])){
+	if ( num == 1 && !isLongOverflow( split_expr[0] )
+		&& ( isdigit( split_expr[0][0] ) || isdigit( split_expr[0][1] ) ) ){
 		std::cout << split_expr[0] << std::endl;
 		ClearAllocs( split_expr );
 		return ;
 	}
 	try{
-		calcResult(split_expr, num);
+		calcResult( split_expr, num );
 	}
-	catch (std::exception & e) {
+	catch ( std::exception & e ) {
 		std::cerr << e.what() << std::endl;
 		ClearAllocs( split_expr );
 		exit( 7 );
 	}
-	if (!_stack.empty())
+	if ( !_stack.empty() )
 		std::cout << _stack.top() << std::endl;
 	ClearAllocs( split_expr );
 }
